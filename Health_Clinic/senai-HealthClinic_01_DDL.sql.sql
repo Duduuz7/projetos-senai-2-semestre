@@ -1,0 +1,80 @@
+-- DDL Health Clinic
+
+--CRIAR BANCO
+
+CREATE DATABASE Projeto_Health_ClinicTD;
+USE Projeto_Health_ClinicTD;
+
+--CRIAR TABELAS
+
+CREATE TABLE TipoUsuario
+(
+	IdTipoUsuario INT PRIMARY KEY IDENTITY,
+	TituloTipoUsuario VARCHAR(30) NOT NULL UNIQUE
+)
+
+CREATE TABLE Clinica
+(
+	IdClinica INT PRIMARY KEY IDENTITY,
+	NomeFantasia VARCHAR(50) NOT NULL,
+	RazaoSocial VARCHAR(150) NOT NULL,
+	CNPJ VARCHAR(14) NOT NULL UNIQUE,
+	Endereco VARCHAR(200) NOT NULL,
+	HorarioAbertura TIME NOT NULL,
+	HorarioFechamento TIME NOT NULL
+)
+
+CREATE TABLE Especialidade
+(
+	IdEspecialidade INT PRIMARY KEY IDENTITY,
+	TituloEspecialidade VARCHAR(60) NOT NULL,
+)
+
+CREATE TABLE Usuario
+(
+	IdUsuario INT PRIMARY KEY IDENTITY,
+	IdTipoUsuario INT FOREIGN KEY REFERENCES TipoUsuario (IdTipoUsuario) NOT NULL,
+	Nome VARCHAR(100) NOT NULL,
+	Email VARCHAR(50) NOT NULL UNIQUE,
+	Senha  VARCHAR(50) NOT NULL
+)
+
+CREATE TABLE Paciente
+(
+	IdPaciente INT PRIMARY KEY IDENTITY,
+	IdUsuario INT FOREIGN KEY REFERENCES Usuario (IdUsuario) NOT NULL,
+	RG VARCHAR(7) NOT NULL UNIQUE,
+	CPF VARCHAR(11) NOT NULL UNIQUE,
+	DataNascimento DATE NOT NULL,
+	Telefone VARCHAR(13) NOT NULL UNIQUE
+
+)
+
+CREATE TABLE Medico
+(
+	IdMedico INT PRIMARY KEY IDENTITY,
+	IdUsuario INT FOREIGN KEY REFERENCES Usuario (IdUsuario) NOT NULL,
+	IdClinica INT FOREIGN KEY REFERENCES Clinica (IdClinica) NOT NULL,
+	IdEspecialidade INT FOREIGN KEY REFERENCES Especialidade (IdEspecialidade) NOT NULL,
+	CRM VARCHAR(10) NOT NULL UNIQUE
+)
+
+CREATE TABLE Consulta
+(
+	IdConsulta INT PRIMARY KEY IDENTITY,
+	IdPaciente INT FOREIGN KEY REFERENCES Paciente (IdPaciente) NOT NULL,
+	IdMedico INT FOREIGN KEY REFERENCES Medico (IdMedico) NOT NULL,
+	Prontuario VARCHAR(250),
+	DataAgendamento DATE NOT NULL,
+	HorarioAgendamento TIME NOT NULL
+)
+
+CREATE TABLE Comentario
+(
+	IdComentario INT PRIMARY KEY IDENTITY,
+	IdConsulta INT FOREIGN KEY REFERENCES Consulta (IdConsulta) NOT NULL,
+	IdPaciente INT FOREIGN KEY REFERENCES Paciente (IdPaciente) NOT NULL,
+	Descricao VARCHAR(250) NOT NULL,
+)
+
+DROP DATABASE Projeto_Health_ClinicTD
