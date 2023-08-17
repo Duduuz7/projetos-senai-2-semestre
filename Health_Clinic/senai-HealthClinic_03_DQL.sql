@@ -39,3 +39,22 @@ FROM
 	INNER JOIN Especialidade ON Medico.IdEspecialidade = Especialidade.IdEspecialidade
 	INNER JOIN Clinica ON Clinica.IdClinica = Medico.IdClinica
 	LEFT JOIN Comentario ON Comentario.IdPaciente = Paciente.IdPaciente
+
+--FUNCTION DESAFIO
+
+CREATE FUNCTION BuscaMedico
+(
+	@Especialidade VARCHAR(100)
+)
+RETURNS TABLE AS
+RETURN
+(
+	SELECT MedicoUsuario.Nome AS Médico, 
+	Especialidade.TituloEspecialidade AS Especialidade
+	FROM Especialidade
+	INNER JOIN Medico ON Medico.IdEspecialidade = Especialidade.IdEspecialidade
+	INNER JOIN Usuario AS MedicoUsuario ON Medico.IdUsuario = MedicoUsuario.IdUsuario
+	WHERE Especialidade.TituloEspecialidade = @Especialidade
+);
+
+SELECT * FROM BuscaMedico('Cardiologia')
