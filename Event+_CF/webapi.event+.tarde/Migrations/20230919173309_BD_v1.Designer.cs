@@ -12,7 +12,7 @@ using webapi.event_.tarde.Contexts;
 namespace webapi.event_.tarde.Migrations
 {
     [DbContext(typeof(EventContext))]
-    [Migration("20230918201817_BD_v1")]
+    [Migration("20230919173309_BD_v1")]
     partial class BD_v1
     {
         /// <inheritdoc />
@@ -98,11 +98,11 @@ namespace webapi.event_.tarde.Migrations
 
                     b.Property<string>("Endereco")
                         .IsRequired()
-                        .HasColumnType("VARCHAR(200");
+                        .HasColumnType("VARCHAR(200)");
 
                     b.Property<string>("NomeFantasia")
                         .IsRequired()
-                        .HasColumnType("VARCHAR(100");
+                        .HasColumnType("VARCHAR(100)");
 
                     b.HasKey("IdInstituicao");
 

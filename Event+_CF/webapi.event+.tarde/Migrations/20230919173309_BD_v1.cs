@@ -17,8 +17,8 @@ namespace webapi.event_.tarde.Migrations
                 {
                     IdInstituicao = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CNPJ = table.Column<string>(type: "CHAR(14)", maxLength: 14, nullable: false),
-                    Endereco = table.Column<string>(type: "VARCHAR(200", nullable: false),
-                    NomeFantasia = table.Column<string>(type: "VARCHAR(100", nullable: false)
+                    Endereco = table.Column<string>(type: "VARCHAR(200)", nullable: false),
+                    NomeFantasia = table.Column<string>(type: "VARCHAR(100)", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -16,11 +16,11 @@ namespace webapi.event_.tarde.Domains
         [StringLength(14)]
         public string? CNPJ { get; set; }
 
-        [Column(TypeName ="VARCHAR(200")]
+        [Column(TypeName ="VARCHAR(200)")]
         [Required(ErrorMessage = "Endereço é obrigatório !")]
         public string? Endereco { get; set; }
 
-        [Column(TypeName = "VARCHAR(100")]
+        [Column(TypeName = "VARCHAR(100)")]
         [Required(ErrorMessage = "O nome fantasia é obrigatório !")]
         public string? NomeFantasia { get; set; }
     }

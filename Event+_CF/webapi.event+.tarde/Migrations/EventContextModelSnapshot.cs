@@ -95,11 +95,11 @@ namespace webapi.event_.tarde.Migrations
 
                     b.Property<string>("Endereco")
                         .IsRequired()
-                        .HasColumnType("VARCHAR(200");
+                        .HasColumnType("VARCHAR(200)");
 
                     b.Property<string>("NomeFantasia")
                         .IsRequired()
-                        .HasColumnType("VARCHAR(100");
+                        .HasColumnType("VARCHAR(100)");
 
                     b.HasKey("IdInstituicao");
 
