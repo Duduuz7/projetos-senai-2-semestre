@@ -17,7 +17,21 @@ namespace webapi.event_.tarde.Repositories
         {
             try
             {
-                Usuario usuarioBuscado = _eventContext.Usuario.FirstOrDefault(x => x.Email == email)!;
+                Usuario usuarioBuscado = _eventContext.Usuario
+                    .Select(x => new Usuario
+                    {
+                        IdUsuario = x.IdUsuario,
+                        Nome = x.Nome,
+                        Email = x.Email,
+                        Senha = x.Senha,
+
+                        TipoUsuario = new TipoUsuario
+                        {
+                            IdTipoUsuario = x.IdTipoUsuario,
+                            Titulo = x.TipoUsuario!.Titulo
+                        }
+                    })
+                    .FirstOrDefault(x => x.Email == email)!;
 
                 if (usuarioBuscado != null)
                 {

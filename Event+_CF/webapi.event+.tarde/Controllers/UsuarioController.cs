@@ -32,5 +32,31 @@ namespace webapi.event_.tarde.Controllers
                 return BadRequest(e.Message);
             }
         }
+
+        [HttpGet("BuscarPorId{id}")]
+        public IActionResult GetById(Guid id)
+        {
+            try
+            {
+                return Ok(_usuarioRepository.BuscarPorId(id));
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro.Message);
+            }
+        }
+
+        [HttpGet("BuscarPorEmailEsenha")]
+        public IActionResult GetByEmailAndPassword(string email, string senha)
+        {
+            try
+            {
+                return Ok(_usuarioRepository.BuscarPorEmailESenha(email, senha));
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro.Message);
+            }
+        }
     }
 }

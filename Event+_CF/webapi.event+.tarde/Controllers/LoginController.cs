@@ -43,6 +43,7 @@ namespace webapi.event_.tarde.Controllers
                     new Claim(JwtRegisteredClaimNames.Jti, usuarioBuscado.IdUsuario.ToString()),
                     new Claim(JwtRegisteredClaimNames.Email, usuarioBuscado.Email!),
                     new Claim(ClaimTypes.Role, usuarioBuscado.IdTipoUsuario.ToString()),
+                    new Claim(ClaimTypes.Role, usuarioBuscado.TipoUsuario!.Titulo!),
 
                     //Existe a possibilidade de criar uma claim personalizada
                     new Claim("Claim Personalizada","Valor Personalizado")

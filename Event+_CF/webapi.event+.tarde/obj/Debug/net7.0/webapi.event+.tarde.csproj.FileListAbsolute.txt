@@ -80,3 +80,5 @@ C:\Users\48114302801\Desktop\projetos-senai-2-semestre\Event+_CF\webapi.event+.t
 C:\Users\48114302801\Desktop\projetos-senai-2-semestre\Event+_CF\webapi.event+.tarde\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 C:\Users\48114302801\Desktop\projetos-senai-2-semestre\Event+_CF\webapi.event+.tarde\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\48114302801\Desktop\projetos-senai-2-semestre\Event+_CF\webapi.event+.tarde\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\48114302801\Desktop\projetos-senai-2-semestre\Event+_CF\webapi.event+.tarde\bin\Debug\net7.0\webapi.event+.tarde.xml
+C:\Users\48114302801\Desktop\projetos-senai-2-semestre\Event+_CF\webapi.event+.tarde\obj\Debug\net7.0\webapi.event+.tarde.xml

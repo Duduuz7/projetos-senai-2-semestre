@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using webapi.event_.tarde.Domains;
 using webapi.event_.tarde.Interfaces;
 using webapi.event_.tarde.Repositories;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace webapi.event_.tarde.Controllers
 {
@@ -33,6 +34,62 @@ namespace webapi.event_.tarde.Controllers
             catch (Exception e)
             {
                 return BadRequest(e.Message);
+            }
+        }
+
+        [HttpGet("Listar")]
+        public IActionResult Get() 
+        {
+            try
+            {
+                return Ok(_tipoUsuarioRepository.Listar());
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro.Message);
+            }
+        }
+
+        [HttpDelete("Deletar{id}")]
+        public IActionResult Delete(Guid id) 
+        {
+            try
+            {
+                _tipoUsuarioRepository.Deletar(id);
+
+                return  NoContent();
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro.Message);
+            }
+        }
+
+        [HttpGet("BuscarPorId{id}")]
+        public IActionResult GetById(Guid id) 
+        {
+            try
+            {
+                return Ok(_tipoUsuarioRepository.BuscarPorId(id));
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro.Message);
+            }
+        }
+
+        [HttpPut("Atualizar{id}")]
+        public IActionResult Put(Guid id, TipoUsuario tipoUsuario) 
+        {
+            try
+            {
+                _tipoUsuarioRepository.Atualizar(id, tipoUsuario);
+
+                return  NoContent();
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro.Message);
             }
         }
     }

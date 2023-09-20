@@ -54,7 +54,7 @@ builder.Services.AddSwaggerGen(options =>
     {
         Version = "v1",
         Title = "API Jogos",
-        Description = "API para gerenciamento de jogos - sprint 2 - Backend API",
+        Description = "API Event+ - sprint 2 - Backend API",
         Contact = new OpenApiContact
         {
             Name = "Eduardo Felipe",
@@ -64,6 +64,7 @@ builder.Services.AddSwaggerGen(options =>
 
     //Configura o Swagger para usar arquivo XML gerado
     var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
 
     //Usando a autenticação no Swagger
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
