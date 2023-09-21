@@ -62,7 +62,12 @@ namespace webapi.event_.tarde.Repositories
 
             try
             {
-                _eventContext.Evento.Remove(eventoBuscado);
+                if (eventoBuscado != null)
+                {
+                    _eventContext.Evento.Remove(eventoBuscado);
+                }
+
+                _eventContext.SaveChanges();
             }
             catch (Exception)
             {

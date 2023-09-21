@@ -18,6 +18,11 @@ namespace webapi.event_.tarde.Controllers
             _instituicaoRepository = new InstituicaoRepository();
         }
 
+        /// <summary>
+        /// Cadastra uma nova instituição
+        /// </summary>
+        /// <param name="instituicao">Objeto com a instituição a ser cadastrada</param>
+        /// <returns>Status Code e a nova instituição cadastrada</returns>
         [HttpPost("Cadastrar")]
         public IActionResult Post(Instituicao instituicao)
         {
@@ -25,7 +30,7 @@ namespace webapi.event_.tarde.Controllers
             {
                 _instituicaoRepository.Cadastrar(instituicao);
 
-                return StatusCode(201);
+                return StatusCode(201, instituicao);
             }
             catch (Exception erro)
             {
@@ -33,6 +38,10 @@ namespace webapi.event_.tarde.Controllers
             }
         }
 
+        /// <summary>
+        /// Lista todas as instituições
+        /// </summary>
+        /// <returns>Status code e uma lista com todas as instituições</returns>
         [HttpGet("Listar")]
         public IActionResult Get() 
         {
@@ -46,6 +55,11 @@ namespace webapi.event_.tarde.Controllers
             }
         }
 
+        /// <summary>
+        /// Deleta uma instituição
+        /// </summary>
+        /// <param name="id">Id da instituição que deseja deletar</param>
+        /// <returns>Status Code</returns>
         [HttpDelete("Deletar{id}")]
         public IActionResult Delete(Guid id)
         {
@@ -61,6 +75,11 @@ namespace webapi.event_.tarde.Controllers
             }
         }
 
+        /// <summary>
+        /// Busca uma instituição pelo seu id
+        /// </summary>
+        /// <param name="id">Id da instituição que deseja buscar</param>
+        /// <returns>Status Code e a instituição buscado</returns>
         [HttpGet("BuscarPorId{id}")]
         public IActionResult GetById(Guid id) 
         {
@@ -74,6 +93,12 @@ namespace webapi.event_.tarde.Controllers
             }
         }
 
+        /// <summary>
+        /// Atualiza uma instituição
+        /// </summary>
+        /// <param name="id">Id da insitituição que deseja atualizar</param>
+        /// <param name="instituicao"></param>
+        /// <returns>Status Code</returns>
         [HttpPut("Atualizar{id}")]
         public IActionResult Put(Guid id, Instituicao instituicao) 
         {

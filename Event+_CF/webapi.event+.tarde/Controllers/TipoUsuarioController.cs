@@ -21,6 +21,11 @@ namespace webapi.event_.tarde.Controllers
             _tipoUsuarioRepository = new TipoUsuarioRepository();
         }
 
+        /// <summary>
+        /// Cadastra um novo tipo de usuário
+        /// </summary>
+        /// <param name="tipoUsuario">Objeto cadastrado</param>
+        /// <returns>Status Code e objeto cadastrado</returns>
         [HttpPost("Cadastrar")]
         //[Authorize(Roles = "6DAAA960-160B-4895-AB43-CA641A088F8B")]
         public IActionResult Post(TipoUsuario tipoUsuario)
@@ -29,7 +34,7 @@ namespace webapi.event_.tarde.Controllers
             {
                 _tipoUsuarioRepository.Cadastrar(tipoUsuario);
 
-                return StatusCode(201);
+                return StatusCode(201, tipoUsuario);
             }
             catch (Exception e)
             {
@@ -37,6 +42,10 @@ namespace webapi.event_.tarde.Controllers
             }
         }
 
+        /// <summary>
+        /// Lista todos os tipos de usuários
+        /// </summary>
+        /// <returns>Status Code e lista com todos os tipos de usuários</returns>
         [HttpGet("Listar")]
         public IActionResult Get() 
         {
@@ -50,6 +59,11 @@ namespace webapi.event_.tarde.Controllers
             }
         }
 
+        /// <summary>
+        /// Deleta um tipo de usuário
+        /// </summary>
+        /// <param name="id">Id do tipo de usuário que deseja deletar</param>
+        /// <returns>Status Code</returns>
         [HttpDelete("Deletar{id}")]
         public IActionResult Delete(Guid id) 
         {
@@ -65,6 +79,11 @@ namespace webapi.event_.tarde.Controllers
             }
         }
 
+        /// <summary>
+        /// Busca um tipo de usuário pelo seu Id
+        /// </summary>
+        /// <param name="id">Id do tipo de usuário que deseja buscar</param>
+        /// <returns>Status Code e objeto com tipo de usuário buscado</returns>
         [HttpGet("BuscarPorId{id}")]
         public IActionResult GetById(Guid id) 
         {
@@ -78,6 +97,12 @@ namespace webapi.event_.tarde.Controllers
             }
         }
 
+        /// <summary>
+        /// Atualiza um tipo de usuário
+        /// </summary>
+        /// <param name="id">id do tipo de usuário que deseja atualizar</param>
+        /// <param name="tipoUsuario"></param>
+        /// <returns>Status Code</returns>
         [HttpPut("Atualizar{id}")]
         public IActionResult Put(Guid id, TipoUsuario tipoUsuario) 
         {

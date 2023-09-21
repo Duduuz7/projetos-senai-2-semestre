@@ -50,7 +50,6 @@ namespace webapi.event_.tarde.Repositories
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -65,6 +64,8 @@ namespace webapi.event_.tarde.Repositories
                 {
                     _eventContext.Instituicao.Remove(instituicaoBuscado);
                 }
+
+                _eventContext.SaveChanges();
             }
             catch (Exception)
             {

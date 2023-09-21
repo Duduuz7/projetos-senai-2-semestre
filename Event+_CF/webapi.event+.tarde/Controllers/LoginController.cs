@@ -22,6 +22,11 @@ namespace webapi.event_.tarde.Controllers
             _usuarioRepository = new UsuarioRepository();
         }
 
+        /// <summary>
+        /// Realiza um login
+        /// </summary>
+        /// <param name="usuario">Usuário Logado</param>
+        /// <returns>Token</returns>
         [HttpPost]
         public IActionResult Login(LoginViewModel usuario)
         {

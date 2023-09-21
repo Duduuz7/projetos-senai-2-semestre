@@ -18,6 +18,11 @@ namespace webapi.event_.tarde.Controllers
             _usuarioRepository = new UsuarioRepository();
         }
 
+        /// <summary>
+        /// Cadastra um novo usuário
+        /// </summary>
+        /// <param name="usuario">Objeto com novo usuário cadastrado</param>
+        /// <returns>Status Code e objeto com o usuário cadastrado</returns>
         [HttpPost]
         public IActionResult Post(Usuario usuario) 
         {
@@ -25,7 +30,7 @@ namespace webapi.event_.tarde.Controllers
             {
                 _usuarioRepository.Cadastrar(usuario);
 
-                return StatusCode(201);
+                return StatusCode(201, usuario);
             }
             catch (Exception e)
             {
@@ -33,6 +38,11 @@ namespace webapi.event_.tarde.Controllers
             }
         }
 
+        /// <summary>
+        /// Busca um usuário pelo seu Id
+        /// </summary>
+        /// <param name="id">Id do usuário que deseja buscar</param>
+        /// <returns>Status Code e objeto com usuário buscado</returns>
         [HttpGet("BuscarPorId{id}")]
         public IActionResult GetById(Guid id)
         {
@@ -46,6 +56,12 @@ namespace webapi.event_.tarde.Controllers
             }
         }
 
+        /// <summary>
+        /// Busca um usuário pelo seu email e senha
+        /// </summary>
+        /// <param name="email">email do usuário que deseja buscar</param>
+        /// <param name="senha">senha do usuário que deseja buscar</param>
+        /// <returns>Status Code e objeto com usuário buscado</returns>
         [HttpGet("BuscarPorEmailEsenha")]
         public IActionResult GetByEmailAndPassword(string email, string senha)
         {

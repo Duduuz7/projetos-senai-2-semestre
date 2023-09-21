@@ -18,6 +18,11 @@ namespace webapi.event_.tarde.Controllers
             _tipoEventoRepository = new TipoEventoRepository();
         }
 
+        /// <summary>
+        /// Cadastra um novo tipo de evento
+        /// </summary>
+        /// <param name="tipoEvento"></param>
+        /// <returns>Status Code e novo tipo cadastrado</returns>
         [HttpPost("Cadastrar")]
         public IActionResult Post(TipoEvento tipoEvento)
         {
@@ -25,7 +30,7 @@ namespace webapi.event_.tarde.Controllers
             {
                 _tipoEventoRepository.Cadastrar(tipoEvento);
 
-                return StatusCode(201);
+                return StatusCode(201, tipoEvento);
             }
             catch (Exception erro)
             {
@@ -33,6 +38,10 @@ namespace webapi.event_.tarde.Controllers
             }
         }
 
+        /// <summary>
+        /// Lista todos os tipos de eventos
+        /// </summary>
+        /// <returns>Status Code e lista com todos os tipos de eventos</returns>
         [HttpGet("Listar")]
         public IActionResult Get()
         {
@@ -46,6 +55,11 @@ namespace webapi.event_.tarde.Controllers
             }
         }
 
+        /// <summary>
+        /// Deleta um tipo de evento
+        /// </summary>
+        /// <param name="id">id do tipo de evento que deseja deletar</param>
+        /// <returns>Status Code</returns>
         [HttpDelete("Deletar{id}")]
         public IActionResult Delete(Guid id)
         {
@@ -61,6 +75,11 @@ namespace webapi.event_.tarde.Controllers
             }
         }
 
+        /// <summary>
+        /// Busca um tipo de evento pelo seu id
+        /// </summary>
+        /// <param name="id">Id do tipo de evento que deseja buscar</param>
+        /// <returns>Status Code</returns>
         [HttpGet("BuscarPorId{id}")]
         public IActionResult GetById(Guid id) 
         {
@@ -74,6 +93,12 @@ namespace webapi.event_.tarde.Controllers
             }
         }
 
+        /// <summary>
+        /// Atualiza um tipo de evento
+        /// </summary>
+        /// <param name="id">Id do tipo de evento que deseja atualizar</param>
+        /// <param name="tipoEvento">Objeto com tipo de evento atualizado</param>
+        /// <returns></returns>
         [HttpPut("Atualizar{id}")]
         public IActionResult Put(Guid id, TipoEvento tipoEvento) 
         {
