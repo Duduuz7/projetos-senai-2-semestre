@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch.Internal;
 using Microsoft.AspNetCore.Mvc;
 using webapi.event_.tarde.Domains;
@@ -11,6 +12,7 @@ namespace webapi.event_.tarde.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
+    [Authorize]
     public class PresencaEventoController : ControllerBase
     {
         private IPresencaEventoRepository _presencaEventoRepository { get; set; }
@@ -98,7 +100,7 @@ namespace webapi.event_.tarde.Controllers
         /// <summary>
         /// Busca uma presença pelo seu id
         /// </summary>
-        /// <param name="id">id da presença que deseja buscar</param>
+        /// <param name="id">id do usuário que deseja buscar</param>
         /// <returns>Status Code</returns>
         [HttpGet("BuscarPorId{id}")]
         public IActionResult GetById(Guid id)

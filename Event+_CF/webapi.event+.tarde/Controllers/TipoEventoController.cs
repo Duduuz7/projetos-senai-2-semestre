@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using webapi.event_.tarde.Domains;
 using webapi.event_.tarde.Interfaces;
@@ -9,6 +10,7 @@ namespace webapi.event_.tarde.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
+    [Authorize]
     public class TipoEventoController : ControllerBase
     {
         private ITipoEventoRepository _tipoEventoRepository { get; set; }
@@ -24,6 +26,7 @@ namespace webapi.event_.tarde.Controllers
         /// <param name="tipoEvento"></param>
         /// <returns>Status Code e novo tipo cadastrado</returns>
         [HttpPost("Cadastrar")]
+        [Authorize(Roles = "Administrador")]
         public IActionResult Post(TipoEvento tipoEvento)
         {
             try
@@ -61,6 +64,7 @@ namespace webapi.event_.tarde.Controllers
         /// <param name="id">id do tipo de evento que deseja deletar</param>
         /// <returns>Status Code</returns>
         [HttpDelete("Deletar{id}")]
+        [Authorize(Roles = "Administrador")]
         public IActionResult Delete(Guid id)
         {
             try

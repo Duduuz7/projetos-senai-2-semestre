@@ -39,10 +39,10 @@ builder.Services.AddAuthentication(options =>
         ClockSkew = TimeSpan.FromMinutes(5),
 
         //De onde está vindo(Issuer)
-        ValidIssuer = "webapi.event_.tarde",
+        ValidIssuer = "webapi.event+.tarde",
 
         //Para onde está indo(Audience)
-        ValidAudience = "webapi.event_.tarde"
+        ValidAudience = "webapi.event+.tarde"
     };
 
 });

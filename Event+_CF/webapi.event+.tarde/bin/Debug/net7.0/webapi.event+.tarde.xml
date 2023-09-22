@@ -4,6 +4,244 @@
         <name>webapi.event+.tarde</name>
     </assembly>
     <members>
+        <member name="M:webapi.event_.tarde.Controllers.ComentarioEventoController.Post(webapi.event_.tarde.Domains.ComentarioEvento)">
+            <summary>
+            Cadastra um novo comentário
+            </summary>
+            <param name="comentario">Comentário cadastrado</param>
+            <returns></returns>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.ComentarioEventoController.Get">
+            <summary>
+            Lista todos os comentários
+            </summary>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.ComentarioEventoController.Delete(System.Guid)">
+            <summary>
+            Deleta um comentário
+            </summary>
+            <param name="id"></param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.ComentarioEventoController.GetById(System.Guid)">
+            <summary>
+            Busca um comentário pelo seu id
+            </summary>
+            <param name="id">id do comentário que deseja buscar</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.EventoController.Post(webapi.event_.tarde.Domains.Evento)">
+            <summary>
+            Cadastra um novo evento
+            </summary>
+            <param name="evento">Objeto cadastrado</param>
+            <returns>Status Code e evento cadastrado</returns>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.EventoController.Get">
+            <summary>
+            Lista todos os eventos cadastrados
+            </summary>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.EventoController.Delete(System.Guid)">
+            <summary>
+            Deleta um evento
+            </summary>
+            <param name="id">Id do evento que deseja deletar</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.EventoController.GetById(System.Guid)">
+            <summary>
+            Busca um evento pelo seu id
+            </summary>
+            <param name="id">Id do evento que deseja buscar</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.EventoController.Put(System.Guid,webapi.event_.tarde.Domains.Evento)">
+            <summary>
+            Atualiza um evento
+            </summary>
+            <param name="id">Id do evento que deseja atualizar</param>
+            <param name="evento">Evento atualizado</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.InstituicaoController.Post(webapi.event_.tarde.Domains.Instituicao)">
+            <summary>
+            Cadastra uma nova instituição
+            </summary>
+            <param name="instituicao">Objeto com a instituição a ser cadastrada</param>
+            <returns>Status Code e a nova instituição cadastrada</returns>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.InstituicaoController.Get">
+            <summary>
+            Lista todas as instituições
+            </summary>
+            <returns>Status code e uma lista com todas as instituições</returns>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.InstituicaoController.Delete(System.Guid)">
+            <summary>
+            Deleta uma instituição
+            </summary>
+            <param name="id">Id da instituição que deseja deletar</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.InstituicaoController.GetById(System.Guid)">
+            <summary>
+            Busca uma instituição pelo seu id
+            </summary>
+            <param name="id">Id da instituição que deseja buscar</param>
+            <returns>Status Code e a instituição buscado</returns>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.InstituicaoController.Put(System.Guid,webapi.event_.tarde.Domains.Instituicao)">
+            <summary>
+            Atualiza uma instituição
+            </summary>
+            <param name="id">Id da insitituição que deseja atualizar</param>
+            <param name="instituicao"></param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.LoginController.Login(webapi.event_.tarde.ViewModels.LoginViewModel)">
+            <summary>
+            Realiza um login
+            </summary>
+            <param name="usuario">Usuário Logado</param>
+            <returns>Token</returns>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.PresencaEventoController.Post(webapi.event_.tarde.Domains.PresencaEvento)">
+            <summary>
+            Inscreve uma nova presença
+            </summary>
+            <param name="presenca"></param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.PresencaEventoController.Get">
+            <summary>
+            Lista todas as presenças
+            </summary>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.PresencaEventoController.GetMy(System.Guid)">
+            <summary>
+            Lista todas as presenças de um usuário
+            </summary>
+            <param name="id">Id da presenca que deseja listar</param>
+            <returns></returns>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.PresencaEventoController.Delete(System.Guid)">
+            <summary>
+            Deleta uma presença
+            </summary>
+            <param name="id">id da presença que deseja deletar</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.PresencaEventoController.GetById(System.Guid)">
+            <summary>
+            Busca uma presença pelo seu id
+            </summary>
+            <param name="id">id da presença que deseja buscar</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.PresencaEventoController.Put(System.Guid,webapi.event_.tarde.Domains.PresencaEvento)">
+            <summary>
+            Atualiza uma presença
+            </summary>
+            <param name="id">id da presença que deseja atualizaf</param>
+            <param name="presenca">presença buscada</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.TipoEventoController.Post(webapi.event_.tarde.Domains.TipoEvento)">
+            <summary>
+            Cadastra um novo tipo de evento
+            </summary>
+            <param name="tipoEvento"></param>
+            <returns>Status Code e novo tipo cadastrado</returns>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.TipoEventoController.Get">
+            <summary>
+            Lista todos os tipos de eventos
+            </summary>
+            <returns>Status Code e lista com todos os tipos de eventos</returns>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.TipoEventoController.Delete(System.Guid)">
+            <summary>
+            Deleta um tipo de evento
+            </summary>
+            <param name="id">id do tipo de evento que deseja deletar</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.TipoEventoController.GetById(System.Guid)">
+            <summary>
+            Busca um tipo de evento pelo seu id
+            </summary>
+            <param name="id">Id do tipo de evento que deseja buscar</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.TipoEventoController.Put(System.Guid,webapi.event_.tarde.Domains.TipoEvento)">
+            <summary>
+            Atualiza um tipo de evento
+            </summary>
+            <param name="id">Id do tipo de evento que deseja atualizar</param>
+            <param name="tipoEvento">Objeto com tipo de evento atualizado</param>
+            <returns></returns>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.TipoUsuarioController.Post(webapi.event_.tarde.Domains.TipoUsuario)">
+            <summary>
+            Cadastra um novo tipo de usuário
+            </summary>
+            <param name="tipoUsuario">Objeto cadastrado</param>
+            <returns>Status Code e objeto cadastrado</returns>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.TipoUsuarioController.Get">
+            <summary>
+            Lista todos os tipos de usuários
+            </summary>
+            <returns>Status Code e lista com todos os tipos de usuários</returns>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.TipoUsuarioController.Delete(System.Guid)">
+            <summary>
+            Deleta um tipo de usuário
+            </summary>
+            <param name="id">Id do tipo de usuário que deseja deletar</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.TipoUsuarioController.GetById(System.Guid)">
+            <summary>
+            Busca um tipo de usuário pelo seu Id
+            </summary>
+            <param name="id">Id do tipo de usuário que deseja buscar</param>
+            <returns>Status Code e objeto com tipo de usuário buscado</returns>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.TipoUsuarioController.Put(System.Guid,webapi.event_.tarde.Domains.TipoUsuario)">
+            <summary>
+            Atualiza um tipo de usuário
+            </summary>
+            <param name="id">id do tipo de usuário que deseja atualizar</param>
+            <param name="tipoUsuario"></param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.UsuarioController.Post(webapi.event_.tarde.Domains.Usuario)">
+            <summary>
+            Cadastra um novo usuário
+            </summary>
+            <param name="usuario">Objeto com novo usuário cadastrado</param>
+            <returns>Status Code e objeto com o usuário cadastrado</returns>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.UsuarioController.GetById(System.Guid)">
+            <summary>
+            Busca um usuário pelo seu Id
+            </summary>
+            <param name="id">Id do usuário que deseja buscar</param>
+            <returns>Status Code e objeto com usuário buscado</returns>
+        </member>
+        <member name="M:webapi.event_.tarde.Controllers.UsuarioController.GetByEmailAndPassword(System.String,System.String)">
+            <summary>
+            Busca um usuário pelo seu email e senha
+            </summary>
+            <param name="email">email do usuário que deseja buscar</param>
+            <param name="senha">senha do usuário que deseja buscar</param>
+            <returns>Status Code e objeto com usuário buscado</returns>
+        </member>
         <member name="T:webapi.event_.tarde.Migrations.BD_v1">
             <inheritdoc />
         </member>

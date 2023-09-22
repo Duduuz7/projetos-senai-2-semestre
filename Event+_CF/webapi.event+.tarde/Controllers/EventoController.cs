@@ -64,6 +64,7 @@ namespace webapi.event_.tarde.Controllers
         /// <param name="id">Id do evento que deseja deletar</param>
         /// <returns>Status Code</returns>
         [HttpDelete("Deletar{id}")]
+        [Authorize(Roles = "6DAAA960-160B-4895-AB43-CA641A088F8B")]
         public IActionResult Delete(Guid id)
         {
             try

@@ -11,7 +11,7 @@ namespace webapi.event_.tarde.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
-    //[Authorize]
+    [Authorize]
     public class TipoUsuarioController : ControllerBase
     {
         private ITipoUsuarioRepository _tipoUsuarioRepository { get; set; }
@@ -27,7 +27,7 @@ namespace webapi.event_.tarde.Controllers
         /// <param name="tipoUsuario">Objeto cadastrado</param>
         /// <returns>Status Code e objeto cadastrado</returns>
         [HttpPost("Cadastrar")]
-        //[Authorize(Roles = "6DAAA960-160B-4895-AB43-CA641A088F8B")]
+        [Authorize(Roles = "Administrador")]
         public IActionResult Post(TipoUsuario tipoUsuario)
         {
             try
@@ -65,6 +65,7 @@ namespace webapi.event_.tarde.Controllers
         /// <param name="id">Id do tipo de usuário que deseja deletar</param>
         /// <returns>Status Code</returns>
         [HttpDelete("Deletar{id}")]
+        [Authorize(Roles = "Administrador")]
         public IActionResult Delete(Guid id) 
         {
             try

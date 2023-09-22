@@ -64,10 +64,10 @@ namespace webapi.event_.tarde.Controllers
                 var token = new JwtSecurityToken
                 (
                     //Emissor do token
-                    issuer: "webapi.event_.tarde",
+                    issuer: "webapi.event+.tarde",
 
                     //Destinatário
-                    audience: " webapi.event_.tarde",
+                    audience: "webapi.event+.tarde",
 
                     //Dados definidos na claim (Payload)
                     claims: claims,

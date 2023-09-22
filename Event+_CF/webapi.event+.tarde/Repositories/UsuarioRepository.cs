@@ -76,7 +76,6 @@ namespace webapi.event_.tarde.Repositories
                 throw;
             }
         }
-
         public void Cadastrar(Usuario usuario)
         {
             try

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using webapi.event_.tarde.Domains;
 using webapi.event_.tarde.Interfaces;
@@ -9,6 +10,7 @@ namespace webapi.event_.tarde.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
+    [Authorize]
     public class InstituicaoController : ControllerBase
     {
         private IInstituicaoRepository _instituicaoRepository { get; set; }
@@ -24,6 +26,7 @@ namespace webapi.event_.tarde.Controllers
         /// <param name="instituicao">Objeto com a instituição a ser cadastrada</param>
         /// <returns>Status Code e a nova instituição cadastrada</returns>
         [HttpPost("Cadastrar")]
+        [Authorize(Roles = "Administrador")]
         public IActionResult Post(Instituicao instituicao)
         {
             try
@@ -61,6 +64,7 @@ namespace webapi.event_.tarde.Controllers
         /// <param name="id">Id da instituição que deseja deletar</param>
         /// <returns>Status Code</returns>
         [HttpDelete("Deletar{id}")]
+        [Authorize(Roles = "Administrador")]
         public IActionResult Delete(Guid id)
         {
             try
