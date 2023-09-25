@@ -23,12 +23,12 @@ namespace webapi.healthclinic.tarde.Domains
         [Required(ErrorMessage = "O endereço é obrigatório !")]
         public string? Endereco { get; set; }
 
-        [Column(TypeName = "TIME")]
+        [Column(TypeName = "DATETIME")]
         [Required(ErrorMessage = "O horário de abertura é obrigatório !")]
-        public TimeOnly HorarioAbertura { get; set; }
+        public DateTime HorarioAbertura { get; set; }
 
-        [Column(TypeName = "TIME")]
+        [Column(TypeName = "DATETIME")]
         [Required(ErrorMessage = "O horário de fechamento é obrigatório !")]
-        public TimeOnly HorarioFechamento { get; set; }
+        public DateTime HorarioFechamento { get; set; }
     }
 }

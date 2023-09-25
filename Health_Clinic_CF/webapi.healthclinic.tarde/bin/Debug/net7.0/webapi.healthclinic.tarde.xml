@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>webapi.healthclinic.tarde</name>
+    </assembly>
+    <members>
+        <member name="M:webapi.healthclinic.tarde.Utils.Criptografia.GerarHash(System.String)">
+            <summary>
+            Gera uma Hash a partir de uma senha
+            </summary>
+            <param name="senha">Senha que receberá essa senha</param>
+            <returns>Senha criptografada com a Hash</returns>
+        </member>
+        <member name="M:webapi.healthclinic.tarde.Utils.Criptografia.CompararHash(System.String,System.String)">
+            <summary>
+            Verifica se a Hash da senha informada é igual a Hash salva no bd
+            </summary>
+            <param name="senhaForm">Senha passada no form de Login</param>
+            <param name="senhaBanco">Senha cadastrada no banco</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
