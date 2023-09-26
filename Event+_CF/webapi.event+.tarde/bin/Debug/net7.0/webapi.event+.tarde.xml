@@ -139,7 +139,7 @@
             <summary>
             Busca uma presença pelo seu id
             </summary>
-            <param name="id">id da presença que deseja buscar</param>
+            <param name="id">id do usuário que deseja buscar</param>
             <returns>Status Code</returns>
         </member>
         <member name="M:webapi.event_.tarde.Controllers.PresencaEventoController.Put(System.Guid,webapi.event_.tarde.Domains.PresencaEvento)">
@@ -252,6 +252,18 @@
             <inheritdoc />
         </member>
         <member name="M:webapi.event_.tarde.Migrations.BD_v1.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:webapi.event_.tarde.Migrations.BD">
+            <inheritdoc />
+        </member>
+        <member name="M:webapi.event_.tarde.Migrations.BD.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:webapi.event_.tarde.Migrations.BD.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:webapi.event_.tarde.Migrations.BD.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
         <member name="M:webapi.event_.tarde.Utils.Criptografia.GerarHash(System.String)">

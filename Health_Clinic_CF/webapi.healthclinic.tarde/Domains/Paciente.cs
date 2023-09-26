@@ -13,11 +13,11 @@ namespace webapi.healthclinic.tarde.Domains
         [Key]
         public Guid IdPaciente { get; set; } = Guid.NewGuid();
 
-        [Column(TypeName = "VARCHAR(7)")]
+        [Column(TypeName = "CHAR(7)")]
         [Required(ErrorMessage = "RG obrigatório !")]
         public string? RG { get; set; }
 
-        [Column(TypeName = "VARCHAR(11)")]
+        [Column(TypeName = "CHAR(11)")]
         [Required(ErrorMessage = "CPF obrigatório !")]
         public string? CPF { get; set; }
 
@@ -28,6 +28,7 @@ namespace webapi.healthclinic.tarde.Domains
         [Column(TypeName = "VARCHAR(13)")]
         [Required(ErrorMessage = "Telefone obrigatório !")]
         public string? Telefone { get; set; }
+
 
         //Referência tabela Usuario = FK
         [Required(ErrorMessage = "O id do usuário é obrigatório !")]

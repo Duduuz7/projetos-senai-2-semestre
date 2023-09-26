@@ -13,6 +13,7 @@ namespace webapi.healthclinic.tarde.Domains
         [Required(ErrorMessage = "A descrição do prontuário é obrigatória !")]
         public string? Descricao { get; set; }
 
+
         //Referência tabela Medico = FK
 
         [Required(ErrorMessage = "O id do médico é obrigatório !")]
@@ -20,6 +21,7 @@ namespace webapi.healthclinic.tarde.Domains
 
         [ForeignKey(nameof(IdMedico))]
         public Medico? Medico { get; set; }
+
 
         //Referência tabela Consulta = FK
 

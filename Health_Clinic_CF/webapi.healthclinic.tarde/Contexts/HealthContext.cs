@@ -3,7 +3,7 @@ using webapi.healthclinic.tarde.Domains;
 
 namespace webapi.healthclinic.tarde.Contexts
 {
-    public class HeathContext : DbContext
+    public class HealthContext : DbContext
     {
         public DbSet<TipoUsuario> TipoUsuario { get; set; }
         public DbSet<Especialidade> Especialidade { get; set; }

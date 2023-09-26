@@ -15,7 +15,7 @@ namespace webapi.healthclinic.tarde.Domains
         [Required(ErrorMessage = "O nome fantasia é obrigatório !")]
         public string? NomeFantasia { get; set; }
 
-        [Column(TypeName = "VARCHAR(14)")]
+        [Column(TypeName = "CHAR(14)")]
         [Required(ErrorMessage = "O CNPJ é obrigatório !")]
         public string? CNPJ { get; set; }
 
@@ -23,12 +23,14 @@ namespace webapi.healthclinic.tarde.Domains
         [Required(ErrorMessage = "O endereço é obrigatório !")]
         public string? Endereco { get; set; }
 
-        [Column(TypeName = "DATETIME")]
-        [Required(ErrorMessage = "O horário de abertura é obrigatório !")]
-        public DateTime HorarioAbertura { get; set; }
 
-        [Column(TypeName = "DATETIME")]
+        [Column(TypeName = "TIME")]
+        [Required(ErrorMessage = "O horário de abertura é obrigatório !")]
+        public TimeSpan? HorarioAbertura { get; set; } = new TimeSpan(1);
+
+        [Column(TypeName = "TIME")]
         [Required(ErrorMessage = "O horário de fechamento é obrigatório !")]
-        public DateTime HorarioFechamento { get; set; }
+        public TimeSpan? HorarioFechamento { get; set; } = new TimeSpan(1);
+
     }
 }
