@@ -13,6 +13,7 @@ namespace webapi.healthclinic.tarde.Repositories
         {
             _healthContext = new HealthContext();
         }
+
         public Usuario BuscarPorEmailESenha(string email, string senha)
         {
             try
@@ -65,7 +66,7 @@ namespace webapi.healthclinic.tarde.Repositories
                         IdTipoUsuario = x.IdTipoUsuario,
                         Titulo = x.TipoUsuario!.Titulo
                     }
-                }).FirstOrDefault(x => x.IdTipoUsuario == id)!;
+                }).FirstOrDefault(x => x.IdUsuario == id)!;
 
                 return usuarioBuscado;
             }
@@ -79,6 +80,8 @@ namespace webapi.healthclinic.tarde.Repositories
         {
             try
             {
+                usuario.Senha = Criptografia.GerarHash(usuario.Senha!);
+
                 _healthContext.Usuario.Add(usuario);
 
                 _healthContext.SaveChanges();
@@ -88,5 +91,17 @@ namespace webapi.healthclinic.tarde.Repositories
                 throw;
             }
         }
+
+        //public void Deletar(Guid id)
+        //{
+        //    Usuario usuarioBuscado = _healthContext.Usuario.Find(id)!;
+
+        //    if (usuarioBuscado != null)
+        //    {
+        //        _healthContext.Remove(usuarioBuscado);
+        //    }
+
+        //    _healthContext.SaveChanges();
+        //}
     }
 }

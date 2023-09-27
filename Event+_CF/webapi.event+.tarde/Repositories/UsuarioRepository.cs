@@ -66,7 +66,7 @@ namespace webapi.event_.tarde.Repositories
                         IdTipoUsuario = x.IdTipoUsuario,
                         Titulo = x.TipoUsuario!.Titulo
                     }
-                }).FirstOrDefault(x => x.IdTipoUsuario == id)!;
+                }).FirstOrDefault(x => x.IdUsuario == id)!;
 
                 return usuarioBuscado;
             }

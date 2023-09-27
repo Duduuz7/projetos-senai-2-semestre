@@ -29,9 +29,9 @@ namespace webapi.healthclinic.tarde.Controllers
 
                 return StatusCode(201, tipoUsuario);
             }
-            catch (Exception e)
+            catch (Exception erro)
             {
-                return BadRequest(e.Message);
+                return BadRequest(erro.Message);
             }
         }
 

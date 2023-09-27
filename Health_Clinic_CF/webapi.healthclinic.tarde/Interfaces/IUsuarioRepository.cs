@@ -7,5 +7,6 @@ namespace webapi.healthclinic.tarde.Interfaces
         void Cadastrar(Usuario usuario);
         Usuario BuscarPorId(Guid id);
         Usuario BuscarPorEmailESenha(string email, string senha);
+        //void Deletar(Guid id);
     }
 }
