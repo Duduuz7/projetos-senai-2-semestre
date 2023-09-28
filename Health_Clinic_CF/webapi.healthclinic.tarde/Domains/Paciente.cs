@@ -13,7 +13,7 @@ namespace webapi.healthclinic.tarde.Domains
         [Key]
         public Guid IdPaciente { get; set; } = Guid.NewGuid();
 
-        [Column(TypeName = "CHAR(7)")]
+        [Column(TypeName = "CHAR(9)")]
         [Required(ErrorMessage = "RG obrigatório !")]
         public string? RG { get; set; }
 

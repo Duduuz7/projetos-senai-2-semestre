@@ -22,6 +22,11 @@ namespace webapi.healthclinic.tarde.Controllers
             _usuarioRepository = new UsuarioRepository();
         }
 
+        /// <summary>
+        /// Efetua Login
+        /// </summary>
+        /// <param name="usuario">Objeto com o usuário que deseja se logar</param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult Login(LoginViewModel usuario)
         {

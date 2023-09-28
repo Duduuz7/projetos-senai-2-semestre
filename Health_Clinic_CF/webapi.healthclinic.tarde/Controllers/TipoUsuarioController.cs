@@ -11,6 +11,7 @@ namespace webapi.healthclinic.tarde.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
+    [Authorize]
     public class TipoUsuarioController : ControllerBase
     {
         private ITipoUsuarioRepository _tipoUsuarioRepository { get; set; }
@@ -20,7 +21,13 @@ namespace webapi.healthclinic.tarde.Controllers
             _tipoUsuarioRepository = new TipoUsuarioRepository();
         }
 
+        /// <summary>
+        /// Cadastra um novo tipo de usuário
+        /// </summary>
+        /// <param name="tipoUsuario">Objeto com tipo de usuário cadastrado</param>
+        /// <returns>Status Code e objeto cadastrados</returns>
         [HttpPost("Cadastrar")]
+        [Authorize(Roles = "Administrador")]
         public IActionResult Post(TipoUsuario tipoUsuario)
         {
             try
@@ -35,7 +42,13 @@ namespace webapi.healthclinic.tarde.Controllers
             }
         }
 
+        /// <summary>
+        /// Deleta um tipo de usuário
+        /// </summary>
+        /// <param name="id">Id do tipo de usuário que deseja deletar</param>
+        /// <returns>Status Code</returns>
         [HttpDelete("Deletar{id}")]
+        [Authorize(Roles = "Administrador")]
         public IActionResult Delete(Guid id)
         {
             try

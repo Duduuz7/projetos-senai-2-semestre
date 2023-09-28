@@ -4,16 +4,258 @@
         <name>webapi.healthclinic.tarde</name>
     </assembly>
     <members>
-        <member name="T:webapi.healthclinic.tarde.Migrations.BD">
+        <member name="M:webapi.healthclinic.tarde.Controllers.ClinicaController.Post(webapi.healthclinic.tarde.Domains.Clinica)">
+            <summary>
+            Cadastra uma nova clinica
+            </summary>
+            <param name="clinica">Objeto cadastrado</param>
+            <returns>Status Code e objeto cadastrado</returns>
+        </member>
+        <member name="M:webapi.healthclinic.tarde.Controllers.ClinicaController.Delete(System.Guid)">
+            <summary>
+            Deleta uma clinica
+            </summary>
+            <param name="id">Id da clinica que deseja deletar</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.healthclinic.tarde.Controllers.ComentarioController.Post(webapi.healthclinic.tarde.Domains.Comentario)">
+            <summary>
+            Cadastra um novo comentário
+            </summary>
+            <param name="comentario">Objeto cadastrado</param>
+            <returns></returns>
+        </member>
+        <member name="M:webapi.healthclinic.tarde.Controllers.ComentarioController.Get">
+            <summary>
+            Lista todos os comentários
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:webapi.healthclinic.tarde.Controllers.ComentarioController.GetById(System.Guid)">
+            <summary>
+            Busca um comentário pelo seu id
+            </summary>
+            <param name="id">id do comentário que deseja buscar</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.healthclinic.tarde.Controllers.ComentarioController.Delete(System.Guid)">
+            <summary>
+            Deleta um comentário
+            </summary>
+            <param name="id">Id do comentário que deseja deletar</param>
+            <returns></returns>
+        </member>
+        <member name="M:webapi.healthclinic.tarde.Controllers.ConsultaController.Post(webapi.healthclinic.tarde.Domains.Consulta)">
+            <summary>
+            Cadastra uma nova consulta
+            </summary>
+            <param name="consulta">Objeto cadastrado</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.healthclinic.tarde.Controllers.ConsultaController.Get">
+            <summary>
+            Lista todas as consultas
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:webapi.healthclinic.tarde.Controllers.ConsultaController.GetById(System.Guid)">
+            <summary>
+            Busca uma consulta pelo seu id
+            </summary>
+            <param name="id">id da consulta que deseja buscar</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.healthclinic.tarde.Controllers.ConsultaController.GetPaciente(System.Guid)">
+            <summary>
+            Lista todas as consultas de um determinado paciente
+            </summary>
+            <param name="id">id do paciente que deseja listar as consultas</param>
+            <returns>status Code</returns>
+        </member>
+        <member name="M:webapi.healthclinic.tarde.Controllers.ConsultaController.GetMedico(System.Guid)">
+            <summary>
+            Lista todas as consultas de um determinado paciente
+            </summary>
+            <param name="id">id do paciente que deseja listar as consultas</param>
+            <returns>status Code</returns>
+        </member>
+        <member name="M:webapi.healthclinic.tarde.Controllers.ConsultaController.Delete(System.Guid)">
+            <summary>
+            Cancela uma consulta
+            </summary>
+            <param name="id">Id da consulta que deseja cancelar</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.healthclinic.tarde.Controllers.ConsultaController.Put(System.Guid,webapi.healthclinic.tarde.Domains.Consulta)">
+            <summary>
+            Atualiza uma consulta
+            </summary>
+            <param name="id">Id da consulta que deseja atualizar</param>
+            <param name="consulta"></param>
+            <returns></returns>
+        </member>
+        <member name="M:webapi.healthclinic.tarde.Controllers.EspecialidadeController.Post(webapi.healthclinic.tarde.Domains.Especialidade)">
+            <summary>
+            Cadastra uma nova especialidade
+            </summary>
+            <param name="especialidade">Objeto com nova especialidade</param>
+            <returns></returns>
+        </member>
+        <member name="M:webapi.healthclinic.tarde.Controllers.EspecialidadeController.Get">
+            <summary>
+            Lista todas as especialidades
+            </summary>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.healthclinic.tarde.Controllers.EspecialidadeController.GetById(System.Guid)">
+            <summary>
+            Busca uma especialidade pelo seu id
+            </summary>
+            <param name="id">Id da especialidade que deseja buscar</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.healthclinic.tarde.Controllers.EspecialidadeController.Delete(System.Guid)">
+            <summary>
+            Deleta uma especialidade
+            </summary>
+            <param name="id">id da especialidade que deseja deletar</param>
+            <returns></returns>
+        </member>
+        <member name="M:webapi.healthclinic.tarde.Controllers.LoginController.Login(webapi.healthclinic.tarde.ViewModels.LoginViewModel)">
+            <summary>
+            Efetua Login
+            </summary>
+            <param name="usuario">Objeto com o usuário que deseja se logar</param>
+            <returns></returns>
+        </member>
+        <member name="M:webapi.healthclinic.tarde.Controllers.MedicoController.Post(webapi.healthclinic.tarde.Domains.Medico)">
+            <summary>
+            Cadastra um novo médico
+            </summary>
+            <param name="medico">Objeto novo</param>
+            <returns>Status Code e objeto cadastrado</returns>
+        </member>
+        <member name="M:webapi.healthclinic.tarde.Controllers.MedicoController.Get">
+            <summary>
+            Lista todos os medicos
+            </summary>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.healthclinic.tarde.Controllers.MedicoController.Delete(System.Guid)">
+            <summary>
+            Deleta um médico
+            </summary>
+            <param name="id">id do médico que deseja deletar</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.healthclinic.tarde.Controllers.PacienteController.Post(webapi.healthclinic.tarde.Domains.Paciente)">
+            <summary>
+            Cadastra um novo paciente
+            </summary>
+            <param name="paciente">Objeto cadastrado</param>
+            <returns>Status Code e objeto cadastrado</returns>
+        </member>
+        <member name="M:webapi.healthclinic.tarde.Controllers.PacienteController.GetById(System.Guid)">
+            <summary>
+            Busca um paciente pelo seu Id
+            </summary>
+            <param name="id">Id do paciente que deseja buscar</param>
+            <returns></returns>
+        </member>
+        <member name="M:webapi.healthclinic.tarde.Controllers.PacienteController.Delete(System.Guid)">
+            <summary>
+            Deleta um paciente
+            </summary>
+            <param name="id">Id do paciente que deseja deletar</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.healthclinic.tarde.Controllers.ProntuarioController.Post(webapi.healthclinic.tarde.Domains.Prontuario)">
+            <summary>
+            Cadastra um novo prontuário
+            </summary>
+            <param name="prontuario">Objeto cadastrado</param>
+            <returns>Status Code e objeto cadastrado</returns>
+        </member>
+        <member name="M:webapi.healthclinic.tarde.Controllers.ProntuarioController.GetById(System.Guid)">
+            <summary>
+            Busca um prontuário pelo seu Id
+            </summary>
+            <param name="id">Id do prontuário que deseja buscar</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.healthclinic.tarde.Controllers.ProntuarioController.Delete(System.Guid)">
+            <summary>
+            Deleta um prontuário
+            </summary>
+            <param name="id">Id do prontuário que deseja excluir</param>
+            <returns></returns>
+        </member>
+        <member name="M:webapi.healthclinic.tarde.Controllers.ProntuarioController.Put(System.Guid,webapi.healthclinic.tarde.Domains.Prontuario)">
+            <summary>
+            Atualiza um prontuário
+            </summary>
+            <param name="id">Id do prontuário que deseja atualizar</param>
+            <param name="prontuario">Objeto atualizado</param>
+            <returns>Status Codes</returns>
+        </member>
+        <member name="M:webapi.healthclinic.tarde.Controllers.TipoUsuarioController.Post(webapi.healthclinic.tarde.Domains.TipoUsuario)">
+            <summary>
+            Cadastra um novo tipo de usuário
+            </summary>
+            <param name="tipoUsuario">Objeto com tipo de usuário cadastrado</param>
+            <returns>Status Code e objeto cadastrados</returns>
+        </member>
+        <member name="M:webapi.healthclinic.tarde.Controllers.TipoUsuarioController.Delete(System.Guid)">
+            <summary>
+            Deleta um tipo de usuário
+            </summary>
+            <param name="id">Id do tipo de usuário que deseja deletar</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.healthclinic.tarde.Controllers.UsuarioController.Post(webapi.healthclinic.tarde.Domains.Usuario)">
+            <summary>
+            Cadastra um novo usuário
+            </summary>
+            <param name="usuario">Objeto com novo usuário</param>
+            <returns>Status Code e usuário cadastrado</returns>
+        </member>
+        <member name="M:webapi.healthclinic.tarde.Controllers.UsuarioController.GetById(System.Guid)">
+            <summary>
+            Busca um usuário pelo seu id
+            </summary>
+            <param name="id">Id do usuário que deseja buscar</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.healthclinic.tarde.Controllers.UsuarioController.GetByEmailAndPassword(System.String,System.String)">
+            <summary>
+            Busca um usuário pelo seu email e senha
+            </summary>
+            <param name="email">email do usuário que deseja buscar</param>
+            <param name="senha">senha do usuário que deseja buscar</param>
+            <returns></returns>
+        </member>
+        <member name="T:webapi.healthclinic.tarde.Migrations.BD_v1">
             <inheritdoc />
         </member>
-        <member name="M:webapi.healthclinic.tarde.Migrations.BD.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:webapi.healthclinic.tarde.Migrations.BD_v1.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:webapi.healthclinic.tarde.Migrations.BD.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:webapi.healthclinic.tarde.Migrations.BD_v1.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:webapi.healthclinic.tarde.Migrations.BD.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+        <member name="M:webapi.healthclinic.tarde.Migrations.BD_v1.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:webapi.healthclinic.tarde.Migrations.BD_v2">
+            <inheritdoc />
+        </member>
+        <member name="M:webapi.healthclinic.tarde.Migrations.BD_v2.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:webapi.healthclinic.tarde.Migrations.BD_v2.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:webapi.healthclinic.tarde.Migrations.BD_v2.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
         <member name="M:webapi.healthclinic.tarde.Utils.Criptografia.GerarHash(System.String)">

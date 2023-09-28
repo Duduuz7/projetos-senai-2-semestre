@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "rBoUdrBFOnNJX7T8UKUg0F+kWIi609FZUBKbwBANC1zuI+zn2ywyl7bC52EArcF5WcqTNWPmAWaUvffvLTblUQ==",
+  "dgSpecHash": "fWkclqkGQQuaB1xrhgtzi8yXy+qYnu7G/a70GyusRtC+sfq6GYqZzVBIaG7bEaCs8tuOchoJSDOXaWZBMw0+Cw==",
   "success": true,
   "projectFilePath": "C:\\Users\\48114302801\\Desktop\\projetos-senai-2-semestre\\Health_Clinic_CF\\webapi.healthclinic.tarde\\webapi.healthclinic.tarde.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\48114302801\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\48114302801\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
     "C:\\Users\\48114302801\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
+    "C:\\Users\\48114302801\\.nuget\\packages\\erikej.entityframeworkcore.sqlserver.dateonlytimeonly\\7.0.5\\erikej.entityframeworkcore.sqlserver.dateonlytimeonly.7.0.5.nupkg.sha512",
     "C:\\Users\\48114302801\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\48114302801\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\7.0.11\\microsoft.aspnetcore.authentication.jwtbearer.7.0.11.nupkg.sha512",
     "C:\\Users\\48114302801\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\7.0.11\\microsoft.aspnetcore.jsonpatch.7.0.11.nupkg.sha512",

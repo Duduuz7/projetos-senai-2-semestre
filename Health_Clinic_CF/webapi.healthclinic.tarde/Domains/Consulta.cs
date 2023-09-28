@@ -15,7 +15,7 @@ namespace webapi.healthclinic.tarde.Domains
 
         [Column(TypeName = "TIME")]
         [Required(ErrorMessage = "O horário do agendamento é obrigatório !")]
-        public TimeSpan HorarioAgendamento { get; set; } = new TimeSpan(1); 
+        public TimeOnly HorarioAgendamento { get; set; } 
 
 
         //Referência tabela Paciente = FK
