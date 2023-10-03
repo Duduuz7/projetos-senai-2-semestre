@@ -76,7 +76,7 @@
             <summary>
             Lista todas as consultas de um determinado paciente
             </summary>
-            <param name="id">id do paciente que deseja listar as consultas</param>
+            <param name="id">id do médico que deseja listar as consultas</param>
             <returns>status Code</returns>
         </member>
         <member name="M:webapi.healthclinic.tarde.Controllers.ConsultaController.Delete(System.Guid)">
