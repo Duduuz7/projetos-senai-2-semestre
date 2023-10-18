@@ -35,7 +35,13 @@ function calcular(e) { //recebe evendo(e) e usa prevent para interromper o submi
     //chamada funcao exibirDados que lista os dados
     exibirDados();
 
-    // console.log(pessoa)
+    //- Uma maneira delimpar os campos do formulário
+    // document.getElementById("nome").value = "";
+    // document.getElementById("altura").value = "";
+    // document.getElementById("peso").value = "";
+
+    //chamada função para limapr campos do formulário
+    limparFormulario();
 
 }//fim função calcular
 
@@ -74,15 +80,6 @@ function geraSituacao(imc) {
 
 
 function exibirDados() {
-    // <tr>
-    //         <td>Eduardo</td>
-    //         <td>1.78</td>
-    //         <td>67</td>
-    //         <td>21.1</td>
-    //         <td>Normal</td>
-    //         <td>19/06/2023 21:27</td>
-    // </tr>
-
     let linhas = "";
 
     listaPessoas.forEach(function (p) {
@@ -90,9 +87,9 @@ function exibirDados() {
         linhas += `
         <tr>
             <td data-cell="nome" id="nome">${p.nome}</td>
-            <td data-cell="altura" id="altura">${p.altura}</td>
+            <td data-cell="altura" id="altura">${p.altura.toFixed(2)}</td>
             <td data-cell="peso" id="peso">${p.peso}</td>
-            <td data-cell="imc" id="imc">${p.imc}</td>
+            <td data-cell="imc" id="imc">${p.imc.toFixed(2)}</td>
             <td data-cell="situacao" id="situacao">${p.situacao}</td>
             <td data-cell="data de cadastro">${p.dataCadastro}</td>
         </tr>
@@ -100,5 +97,10 @@ function exibirDados() {
     });
 
     document.getElementById("corpo-tabela").innerHTML = linhas;
+}
 
+function limparFormulario() {
+    document.getElementById("nome").value = "";
+    document.getElementById("altura").value = "";
+    document.getElementById("peso").value = "";
 }
