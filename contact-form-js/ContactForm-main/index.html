@@ -12,6 +12,7 @@
 
     ">
     <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/contato.js" defer></script>
 </head>
 
 <body>
@@ -27,7 +28,7 @@
         <h1 class="titulo">Contact form</h1>
         <p class="descricao">Insira os dados do contato e clique em cadastrar!</p>
 
-        <form onsubmit="cadastrarContato(event)" action="" class="formulario-contato">
+        <form onsubmit="cadastrarContato(event)" class="formulario-contato">
             <div class="linha">
                 <div class="rotulos">
                     <label for="nome">Nome</label>
@@ -65,7 +66,7 @@
                 </div>
                 <div class="entradas">
                     <input type="number" id="cep" class="entrada entrada--quarto" placeholder="cep: 9999-999"
-                        maxlength="8">
+                        onblur="chamarApi()" autocomplete="off" maxlength="8">
                     <input type="text" id="rua" class="entrada entrada--metade" placeholder="Rua Lá de Casa">
                     <input type="text" id="numero" class="entrada entrada--quarto" placeholder="ex: 555">
                     <input type="text" id="complemento" class="entrada entrada--terco" placeholder="Apto. 12 Bloco X">
@@ -80,14 +81,14 @@
                     <label for="pais">Anotações</label>
                 </div>
                 <div class="entradas">
-                    <textarea class="entrada anotacoes" name="anotacoes" id=""
+                    <textarea id="anotacoes" class="entrada anotacoes" name="anotacoes" id=""
                         placeholder="Suas anotações aqui"></textarea>
                 </div>
             </div>
 
             <div class="linha box-botoes">
-                <button type="button" class="btn cadastrar">Cadastrar</button>
-                <button type="button" class="btn limpar">Limpar</button>
+                <button class="btn cadastrar">Cadastrar</button>
+                <button type="button" onclick="limparTudo()" class="btn limpar">Limpar</button>
             </div>
         </form>
         <section class="cadastros">
@@ -95,33 +96,6 @@
 
             </article>
         </section>
-
-
-        <script>
-
-            const urlLocal = "http://localhost:3000/contatos";
-
-            async function cadastrarContato(e) {
-                e.preventDefault();
-
-                const nome = document.getElementById("nome").value;
-                const sobrenome = document.getElementById("sobrenome").value;
-                const email = document.getElementById("email").value;
-                const pais = document.getElementById("pais").value;
-                const ddd = document.getElementById("ddd").value;
-                const telefone = document.getElementById("telefone").value;
-                const cep = document.getElementById("cep").value;
-                const rua = document.getElementById("rua").value;
-                const numero = document.getElementById("numero").value;
-                const complemento = document.getElementById("complemento").value;
-                const bairro = document.getElementById("bairro").value;
-                const cidade = document.getElementById("cidade").value;
-                const UF = document.getElementById("UF").value;
-
-                
-            }
-
-        </script>
 
 </body>
 

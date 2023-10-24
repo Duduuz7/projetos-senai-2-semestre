@@ -1,3 +1,21 @@
 {
-  "contatos": []
+  "contatos": [
+    {
+      "nome": "Eduardo",
+      "sobrenome": "",
+      "email": "eduardo.felipe4@aluno.senai.br",
+      "pais": "55",
+      "ddd": "11",
+      "telefone": "96492628",
+      "cep": "03268020",
+      "rua": "Rua Amatari",
+      "numero": "105",
+      "complemento": ".",
+      "bairro": "Vila Tolstoi",
+      "cidade": "São Paulo",
+      "UF": "SP",
+      "anotacoes": "...",
+      "id": 1
+    }
+  ]
 }
