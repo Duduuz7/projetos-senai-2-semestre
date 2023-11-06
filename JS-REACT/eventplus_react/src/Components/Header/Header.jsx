@@ -1,22 +1,35 @@
-import React from 'react';
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react';
+import './Header.css'
+import Container from '../Container/Container';
+import Nav from '../Nav/Nav';
+import PerfilUsuario from '../PerfilUsuario/PerfilUsuario';
+
+//imagens/bar
+import menubar from '../../assets/images/images/menubar.png'
 
 const Header = () => {
+
+    const [exibeNavbar, setExibeNavbar] = useState(false);
+    console.log(`$EXIBE A NAVBAR ? ${exibeNavbar}`);
+
     return (
-        <header>
-            <nav>
+        <header className='headerpage'>
+            <Container>
+                <div className="header-flex">
+                    <img
+                        src={menubar}
+                        alt="Imagem menu de barrras. Serve para exibir ou esconder o menu no smartphone."
+                        onClick={() => { setExibeNavbar(true) }}    
+                    />
 
-                <Link to="/" >Home</Link>
-                <br />
-                <Link to="/tipo-eventos" >Tipo Eventos</Link>
-                <br />
-                <Link to="/eventos" >Eventos</Link>
-                <br />
-                <Link to="/login" >Login</Link>
-                <br />
-                <Link to="/testes" >Testes</Link>
+                    <Nav 
+                    exibeNavbar={exibeNavbar}
+                    setExibeNavbar={setExibeNavbar} 
+                    />
 
-            </nav>
+                    <PerfilUsuario />
+                </div>
+            </Container>
         </header>
     );
 };
