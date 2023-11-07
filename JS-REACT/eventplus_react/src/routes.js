@@ -9,6 +9,7 @@ import LoginPage from "./Pages/LoginPage/LoginPage";
 import TestePage from "./Pages/TestePage/TestePage";
 
 import Header from "./Components/Header/Header";
+import Footer from "./Components/Footer/Footer";
 
 const Rotas = () => {
   return (
@@ -21,6 +22,7 @@ const Rotas = () => {
         <Route element={<LoginPage />} path="/login" />
         <Route element={<TestePage />} path="/testes" />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 };
