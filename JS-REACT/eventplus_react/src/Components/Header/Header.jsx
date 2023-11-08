@@ -20,12 +20,12 @@ const Header = () => {
                         src={menubar}
                         className='headerpage__menubar'
                         alt="Imagem menu de barrras. Serve para exibir ou esconder o menu no smartphone."
-                        onClick={() => { setExibeNavbar(true) }}    
+                        onClick={() => { setExibeNavbar(true) }}
                     />
 
-                    <Nav 
-                    exibeNavbar={exibeNavbar}
-                    setExibeNavbar={setExibeNavbar} 
+                    <Nav
+                        exibeNavbar={exibeNavbar}
+                        setExibeNavbar={setExibeNavbar}
                     />
 
                     <PerfilUsuario />
