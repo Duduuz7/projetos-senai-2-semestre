@@ -7,18 +7,16 @@ import VisionSection from '../../Components/VisionSection/VisionSection';
 import NextEvent from '../../Components/NextEvent/NextEvent';
 import Container from '../../Components/Container/Container';
 import ContactSection from '../../Components/ContactSection/ContactSection';
-import axios from 'axios';
+import api from '../../Services/Services';
 
 const HomePage = () => {
-
-    const endereco = "http://localhost:5000/api/Evento/ListarProximos"
 
     useEffect(() => {
         //chamar a api
         async function getProximosEventos() {
             try {
 
-                const promise = await axios.get("http://localhost:5000/api/Evento/ListarProximos")
+                const promise = await api.get("/Evento/ListarProximos")
 
                 console.log(promise.data);
 
@@ -49,6 +47,7 @@ const HomePage = () => {
                     <div className="events-box">
                         {
                             nextEvents.map((e) => {
+
                                 return (
                                     <NextEvent
                                         title={e.nomeEvento}
