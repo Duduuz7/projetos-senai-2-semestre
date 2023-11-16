@@ -8,14 +8,13 @@ import eventImage from '../../assets/images/images/evento.svg'
 import Container from '../../Components/Container/Container';
 
 //form
-import { Input } from '../../Components/FormComponents/FormComponents'
+import { Input, Button } from '../../Components/FormComponents/FormComponents'
 
 const EventosPage = () => {
+    
     return (
-        <section className='cadastro-evento-section'>
-
-            <MainContent>
-
+        <MainContent>
+            <section className='cadastro-evento-section'>
                 <Container>
 
                     <div className='cadastro-evento__box'>
@@ -45,10 +44,8 @@ const EventosPage = () => {
                     </div>
 
                 </Container>
-
-            </MainContent>
-
-        </section>
+            </section>
+        </MainContent>
     );
 };
 

@@ -26,4 +26,23 @@ export const Input = ({
             />
         </>
     );
-};
+}
+
+export const Label = ({ htmlFor, labelText }) => {
+    return <label htmlFor={htmlFor}>{labelText}</label>
+}
+
+// componente criado na forma tradicional props ao invés do destructuring
+export const Button = (props) => {
+    return (
+        <button
+            id={props.id}
+            name={props.name}
+            type={props.type}
+            className={`button-component ${props.additionalClass}`}
+            onClick={props.manipulationFunction}
+        >
+            {props.textButton}
+        </button>
+    );
+}

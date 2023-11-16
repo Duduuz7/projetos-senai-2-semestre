@@ -50,6 +50,7 @@ const HomePage = () => {
 
                                 return (
                                     <NextEvent
+                                        key={e.idEvento}
                                         title={e.nomeEvento}
                                         description={e.descricao}
                                         eventDate={e.dataEvento}
