@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './TipoEventosPage.css'
 import Title from '../../Components/Title/Title';
 import MainContent from '../../Components/MainContent/MainContent';
@@ -6,6 +6,7 @@ import Container from '../../Components/Container/Container';
 import ImageIllustrator from '../../Components/ImageIllustrator/ImageIllustrator';
 import eventTypeImage from '../../assets/images/images/tipo-evento.svg'
 import api from '../../Services/Services';
+import Notification from '../../Components/Notification/Notification';
 
 //form
 
@@ -16,19 +17,38 @@ import { Input, Button } from '../../Components/FormComponents/FormComponents'
 import TableTp from './TableTp/TableTp';
 
 
+
 const TipoEventosPage = () => {
 
+    const [notifyUser, setNotifyUser] = useState({})
     const [frmEdit, setFrmEdit] = useState(false);
     const [titulo, setTitulo] = useState("");
+    const [tipoEventos, setTipoEventos] = useState([]);
 
-    const [tipoEventos, setTipoEventos] = useState([
-        { idTipoEvento: "123", titulo: "Evento ABC" },
-        { idTipoEvento: "555", titulo: "Evento xpto" },
-        { idTipoEvento: "444", titulo: "Evento de JavaScript" }
-    ]); //Array mocado
+    useEffect(() => {
 
-    //no state ja colocar tipo do dado no () do use, nesse caso array, acima string
+        //chamar a api
+        async function getTipoEventos() {
+            try {
 
+                const promise = await api.get("/TiposEvento")
+
+                console.log(promise.data);
+
+                setTipoEventos(promise.data)
+
+            } catch (error) {
+                console.log("Deu Ruim !!!")
+                console.log(error);
+            }
+        }
+
+        console.log("Deu Bom !!!");
+
+        getTipoEventos()
+    }, []);
+
+    //  CADASTRAR
     async function handleSubmit(e) {
         //parar o submit do formulário
         e.preventDefault();
@@ -39,10 +59,21 @@ const TipoEventosPage = () => {
         }
         //chamar API
         try {
-            const retorno = await api.post('/TiposEvento', { titulo: titulo }) //transforma em json para passar para api/banco
-            console.log("Cadastrado com sucesso !");
+            const retorno = await api.post('/TiposEvento', { titulo: titulo }); //transforma em json para passar para api/banco
+
+            setNotifyUser({
+                titleNote: "Sucesso",
+                textNote: `Cadastrado com sucesso!`,
+                imgIcon: "success",
+                imgAlt:
+                  "Imagem de ilustração de sucesso. Moça segurando um balão com símbolo de confirmação ok.",
+                showMessage: true,
+              });
+
             console.log(retorno.data);
             setTitulo("");//limpa a variável após enter/cadastro
+            const retornoGet = await api.get('/TiposEvento');
+            setTipoEventos(retornoGet.data)
         } catch (error) {
             console.log("Deu ruim na API");
             console.log(error);
@@ -65,12 +96,24 @@ const TipoEventosPage = () => {
 
     // ****************** DELETAR CADASTRO ***************
 
-    function handleDelete() {
-        alert('Bora lá apagar na api')
+    async function handleDelete(id) {
+        try {
+            const retorno = await api.delete(`/TiposEvento/${id}`)
+
+            console.log("Registro apagado com sucesso !!!");
+
+            const retornoGet = await api.get('/TiposEvento');
+            setTipoEventos(retornoGet.data)
+        } catch (error) {
+            console.log("Erro ao excluir !!!");
+            console.log(error);
+        }
     }
 
     return (
         <MainContent>
+
+            {<Notification {...notifyUser} setNotifyUser={setNotifyUser} />}
 
             {/* CADASTRO DE TIPO DE EVENTOS */}
 
