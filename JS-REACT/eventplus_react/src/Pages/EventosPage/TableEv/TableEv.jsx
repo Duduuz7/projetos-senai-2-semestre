@@ -1,9 +1,9 @@
 import React from 'react';
-import './TableTp.css'
+import './TableEv.css'
 import editPen from '../../../assets/images/images/edit-pen.svg'
 import trashDelete from '../../../assets/images/images/trash-delete.svg'
 
-const TableTp = ({ dados, fnUpdate = null, fnDelete = null }) => {
+const TableEv = ({ dados, fnUpdate = null, fnDelete = null }) => {
 
 
 
@@ -51,4 +51,4 @@ const TableTp = ({ dados, fnUpdate = null, fnDelete = null }) => {
     );
 };
 
-export default TableTp;
+export default TableEv;
