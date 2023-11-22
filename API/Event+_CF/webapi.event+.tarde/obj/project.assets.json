@@ -3344,11 +3344,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\48114302801\\Desktop\\projetos-senai-2-semestre\\Event+_CF\\webapi.event+.tarde\\webapi.event+.tarde.csproj",
+      "projectUniqueName": "C:\\Users\\48114302801\\Desktop\\projetos-senai-2-semestre\\API\\Event+_CF\\webapi.event+.tarde\\webapi.event+.tarde.csproj",
       "projectName": "webapi.event+.tarde",
-      "projectPath": "C:\\Users\\48114302801\\Desktop\\projetos-senai-2-semestre\\Event+_CF\\webapi.event+.tarde\\webapi.event+.tarde.csproj",
+      "projectPath": "C:\\Users\\48114302801\\Desktop\\projetos-senai-2-semestre\\API\\Event+_CF\\webapi.event+.tarde\\webapi.event+.tarde.csproj",
       "packagesPath": "C:\\Users\\48114302801\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\48114302801\\Desktop\\projetos-senai-2-semestre\\Event+_CF\\webapi.event+.tarde\\obj\\",
+      "outputPath": "C:\\Users\\48114302801\\Desktop\\projetos-senai-2-semestre\\API\\Event+_CF\\webapi.event+.tarde\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\48114302801\\AppData\\Roaming\\NuGet\\NuGet.Config",

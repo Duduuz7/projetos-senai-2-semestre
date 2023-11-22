@@ -2,6 +2,7 @@ import React from 'react';
 import './TableEv.css'
 import editPen from '../../../assets/images/images/edit-pen.svg'
 import trashDelete from '../../../assets/images/images/trash-delete.svg'
+import { dateFormatDbToView } from '../../../Utils/stringFunctions'
 
 const TableEv = ({ dados, fnUpdate = null, fnDelete = null }) => {
 
@@ -11,7 +12,10 @@ const TableEv = ({ dados, fnUpdate = null, fnDelete = null }) => {
         <table className='table-data'>
             <thead className="table-data__head">
                 <tr className="table-data__head-row">
-                    <th className="table-data__head-title table-data__head-title--big">Título</th>
+                    <th className="table-data__head-title table-data__head-title--big">Nome</th>
+                    <th className="table-data__head-title table-data__head-title--big">Descrição</th>
+                    <th className="table-data__head-title table-data__head-title--big">Tipo Evento</th>
+                    <th className="table-data__head-title table-data__head-title--big">Data</th>
                     <th className="table-data__head-title table-data__head-title--little">Editar</th>
                     <th className="table-data__head-title table-data__head-title--little">Deletar</th>
                 </tr>
@@ -23,7 +27,16 @@ const TableEv = ({ dados, fnUpdate = null, fnDelete = null }) => {
                 {dados.map((e) => {
                     return (<tr className="table-data__head-row">
                         <td className="table-data__data table-data__data--big">
-                            {e.titulo}
+                            {e.nomeEvento}
+                        </td>
+                        <td className="table-data__data table-data__data--big">
+                            {e.descricao}
+                        </td>
+                        <td className="table-data__data table-data__data--big">
+                            {e.tiposEvento.titulo}
+                        </td>
+                        <td className="table-data__data table-data__data--big">
+                            {dateFormatDbToView(e.dataEvento)}
                         </td>
 
                         <td className="table-data__data table-data__data--little">
@@ -31,7 +44,7 @@ const TableEv = ({ dados, fnUpdate = null, fnDelete = null }) => {
                                 className="table-data__icon"
                                 src={editPen} alt=""
                                 onClick={() => {
-                                    fnUpdate(e.idTipoEvento)
+                                    fnUpdate(e.idEvento)
                                 }} />
                         </td>
 
@@ -40,7 +53,7 @@ const TableEv = ({ dados, fnUpdate = null, fnDelete = null }) => {
                                 className="table-data__icon"
                                 src={trashDelete} alt=""
                                 onClick={() => {
-                                    fnDelete(e.idTipoEvento)
+                                    fnDelete(e.idEvento)
                                 }} />
                         </td>
                     </tr>

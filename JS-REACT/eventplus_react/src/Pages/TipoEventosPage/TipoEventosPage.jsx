@@ -18,11 +18,10 @@ import { Input, Button } from '../../Components/FormComponents/FormComponents'
 import TableTp from './TableTp/TableTp';
 
 
-
 const TipoEventosPage = () => {
 
-    const [notifyUser, setNotifyUser] = useState({})
-    const [showSpinner, setShowSpinner] = useState(false)
+    const [notifyUser, setNotifyUser] = useState({});
+    const [showSpinner, setShowSpinner] = useState(false);
 
     const [frmEdit, setFrmEdit] = useState(false);
     const [titulo, setTitulo] = useState("");
