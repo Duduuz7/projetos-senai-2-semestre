@@ -7,13 +7,13 @@ import Notification from '../../Components/Notification/Notification';
 import api from '../../Services/Services';
 import Spinner from '../../Components/Spinner/Spinner'
 
-import { dateFormatDbToView } from '../../Utils/stringFunctions'
+import { dateFormatDbToView1 } from '../../Utils/stringFunctions'
 
 import eventImage from '../../assets/images/images/evento.svg'
 import Container from '../../Components/Container/Container';
 
 //form
-import { Input, Button } from '../../Components/FormComponents/FormComponents'
+import { Input, Button, Select } from '../../Components/FormComponents/FormComponents'
 
 //table
 import TableEv from './TableEv/TableEv';
@@ -33,9 +33,10 @@ const EventosPage = () => {
     const [nome, setNome] = useState([]);
     const [descricao, setDescricao] = useState([]);
     const [tiposEvento, setTiposEvento] = useState([]);
-    const [dataEvento, setDataEvento] = useState([]);
+    const [dataEvento, setDataEvento] = useState("");
 
     const [instituicao, setInstituicao] = useState([]);
+    const [selecionado, setSelecionado] = useState("");
 
     // *****************************************************
 
@@ -147,7 +148,7 @@ const EventosPage = () => {
                     nomeEvento: nome,
                     descricao: descricao,
                     dataEvento: dataEvento,
-                    idTipoEvento: tiposEvento,
+                    idTipoEvento: selecionado,
                     idInstituicao: instituicao
                 }
             );
@@ -165,7 +166,8 @@ const EventosPage = () => {
             //limpar variáveis/campos
             setNome("")
             setDescricao("")
-            setTiposEvento(null)
+            // setTiposEvento([])
+            setSelecionado("")
             setDataEvento("")
 
             //retorno
@@ -206,6 +208,7 @@ const EventosPage = () => {
             setNome(retornoGetById.data.nomeEvento)
             setDescricao(retornoGetById.data.descricao)
             setDataEvento(retornoGetById.data.dataEvento)
+            setSelecionado(retornoGetById.data.titulo)
 
         } catch (error) {
 
@@ -233,7 +236,7 @@ const EventosPage = () => {
                 nomeEvento: nome,
                 descricao: descricao,
                 dataEvento: dataEvento,
-                idTipoEvento: tiposEvento,
+                idTipoEvento: selecionado,
                 idInstituicao: instituicao
             })
 
@@ -273,8 +276,9 @@ const EventosPage = () => {
         setFrmEdit(false);
         setNome("")
         setDescricao("")
-        setTiposEvento(null)
+        setTiposEvento([])
         setDataEvento("")
+        setSelecionado("")
     }
 
     // ******************** DELETAR ***********************************
@@ -369,21 +373,28 @@ const EventosPage = () => {
                                         }
                                     />
 
-                                    <Input
-                                        id={"tipoEvento"}
-                                        name={"tipoEvento"}
-                                        type={"text"}
-                                        required={"required"}
-                                        placeholder={"Tipo Evento"}
-
-
-                                        value={tiposEvento}
+                                    <Select
+                                        dados={tiposEvento}
+                                        id={"tiposEvento"}
+                                        name={"tiposEvento"}
                                         manipulationFunction={
                                             (e) => {
-                                                setTiposEvento(e.target.value)
+                                                setSelecionado(e.target.value)
                                             }
                                         }
                                     />
+
+                                    {/* <Select
+                                        dados={instituicao}
+                                        id={"instituicao"}
+                                        name={"instituicao"}
+                                        manipulationFunction={
+                                            (e) => {
+                                                setInstituicao(e.target.value)
+                                            }
+                                        }
+                                    /> */}
+
 
                                     <Input
                                         id={"dataEvento"}
@@ -442,9 +453,16 @@ const EventosPage = () => {
                                             }
                                         />
 
-                                        <select className='select-tp-evento' name="" id="">
-
-                                        </select>
+                                        <Select
+                                            dados={tiposEvento}
+                                            id={"tiposEvento"}
+                                            name={"tiposEvento"}
+                                            manipulationFunction={
+                                                (e) => {
+                                                    setSelecionado(e.target.value)
+                                                }
+                                            }
+                                        />
 
                                         <Input
                                             id={"data"}
@@ -452,7 +470,7 @@ const EventosPage = () => {
                                             type={"date"}
                                             required={"required"}
                                             placeholder={"dd//mm//aaaa"}
-                                            value={dataEvento}
+                                            value={dateFormatDbToView1(dataEvento)}
                                             manipulationFunction={
                                                 (e) => {
                                                     setDataEvento(e.target.value)
