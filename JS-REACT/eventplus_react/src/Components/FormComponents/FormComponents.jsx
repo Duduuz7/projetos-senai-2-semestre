@@ -60,7 +60,7 @@ export const Select = ({ dados = [], name, id, required, additionalClass = "", m
             value={defaultValue}
         >
 
-            <option value="">Tipos Evento</option>
+            <option value="">Tipo Evento</option>
             {dados.map((opt) => {
                 return (
                     <option key={opt.idTipoEvento} value={opt.idTipoEvento}>{opt.titulo}</option>

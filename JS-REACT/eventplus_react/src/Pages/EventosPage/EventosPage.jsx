@@ -128,7 +128,7 @@ const EventosPage = () => {
             return;
         }
 
-        else if (dataEvento == null) {
+        else if (evento.dataEvento == null) {
             setNotifyUser({
                 titleNote: "Aviso",
                 textNote: `O evento deve ter uma data.`,
@@ -137,9 +137,9 @@ const EventosPage = () => {
                     "Imagem de ilustração de aviso.",
                 showMessage: true,
             });
+            
             return;
         }
-
 
         try {
 
