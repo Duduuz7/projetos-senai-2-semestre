@@ -1,27 +1,35 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import ImageIllustrator from "../../Components/ImageIllustrator/ImageIllustrator";
 import logo from "../../assets/images/images/logo-pink.svg";
 import { Input, Button } from "../../Components/FormComponents/FormComponents";
 import loginImage from "../../assets/images/images/login.svg"
 import api from '../../Services/Services';
+
 import Notification from '../../Components/Notification/Notification';
-
-
 
 import "./LoginPage.css";
 import { UserContext, userDecodeToken } from "../../context/AuthContext";
+
+// ============================================================================================
 
 const LoginPage = () => {
 
     const [user, setUser] = useState({ email: "eduardo@admin.com", senha: "123456" })
 
-    // dados globais do usuário
+    // dados globais do usuário, useContext
     const { userData, setUserData } = useContext(UserContext)
 
 
     const [notifyUser, setNotifyUser] = useState({});
 
+    const navigate = useNavigate();
 
+    useEffect(() => {
+
+        if (userData.name) navigate("/")
+
+    }, [userData])
 
     async function handleSubmit(e) {
 
@@ -30,6 +38,7 @@ const LoginPage = () => {
         if (user.email.length >= 3 && user.senha.length > 3) {
 
             try {
+
                 const promise = await api.post("/Login", {
                     email: user.email,
                     senha: user.senha
@@ -39,7 +48,7 @@ const LoginPage = () => {
                 const userFullToken = userDecodeToken(promise.data.token);
 
                 setUserData(userFullToken); //guarda os dados decodificados (payload)
-                localStorage.setItem("token", JSON.stringify(userFullToken));
+                localStorage.setItem("token", JSON.stringify(userFullToken)); // guarda no localstorage, transformando em string
 
                 console.log("DADOS DO USUÁRIO:");
                 console.log(userData);
@@ -53,6 +62,8 @@ const LoginPage = () => {
                     showMessage: true,
                 });
 
+                navigate("/")
+
             } catch (error) {
                 setNotifyUser({
                     titleNote: "Erro",
@@ -62,6 +73,8 @@ const LoginPage = () => {
                         "Usuário ou senha inválidos ou conexão com a internet interrompida.",
                     showMessage: true,
                 })
+
+                alert("Usuário ou senha inválidos ou conexão com a internet interrompida.")
             }
         }
 
@@ -75,7 +88,7 @@ const LoginPage = () => {
                 showMessage: true,
             });
         }
-        console.log(user);
+        // console.log(user);
     }
 
     return (

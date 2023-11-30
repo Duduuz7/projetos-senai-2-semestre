@@ -7,7 +7,7 @@ import logoMobile from '../../assets/images/images/logo-white.svg'
 import logoDesktop from '../../assets/images/images/logo-pink.svg'
 
 //para tirar o props, fazer destructuring (passar so o nome)
-const Nav = ({setExibeNavbar, exibeNavbar}) => {
+const Nav = ({ setExibeNavbar, exibeNavbar }) => {
     return (
         <nav className={`navbar ${exibeNavbar ? "exibeNavbar" : ""}`}>
             <span
@@ -29,7 +29,7 @@ const Nav = ({setExibeNavbar, exibeNavbar}) => {
                 <Link to="/" className="navbar__item">Home</Link>
                 <Link to="/tipo-eventos" className="navbar__item">Tipo Eventos</Link>
                 <Link to="/eventos" className="navbar__item">Eventos</Link>
-                <Link to="/login" className="navbar__item">Login</Link>
+                {/* <Link to="/login" className="navbar__item">Login</Link> */}
             </div>
         </nav>
     );
