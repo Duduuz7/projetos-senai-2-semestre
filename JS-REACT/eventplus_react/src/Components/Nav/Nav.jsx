@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from "react";
 import { Link } from 'react-router-dom';
 import './Nav.css'
 
@@ -6,8 +6,14 @@ import './Nav.css'
 import logoMobile from '../../assets/images/images/logo-white.svg'
 import logoDesktop from '../../assets/images/images/logo-pink.svg'
 
+//uses
+import { UserContext } from "../../context/AuthContext";
+
 //para tirar o props, fazer destructuring (passar so o nome)
 const Nav = ({ setExibeNavbar, exibeNavbar }) => {
+
+    const { userData } = useContext(UserContext)
+
     return (
         <nav className={`navbar ${exibeNavbar ? "exibeNavbar" : ""}`}>
             <span
@@ -26,9 +32,22 @@ const Nav = ({ setExibeNavbar, exibeNavbar }) => {
             </Link>
 
             <div className='navbar__items-box'>
+
                 <Link to="/" className="navbar__item">Home</Link>
-                <Link to="/tipo-eventos" className="navbar__item">Tipo Eventos</Link>
-                <Link to="/eventos" className="navbar__item">Eventos</Link>
+                {userData.name && userData.role === "Administrador" ? (
+                    <>
+                        <Link to="/tipo-eventos" className="navbar__item">Tipo Eventos</Link>
+
+                        <Link to="/eventos" className="navbar__item">Eventos</Link>
+                    </>
+                )
+                    :
+                    (
+                        userData.role === "Aluno" ? (<Link to="/eventos-aluno" className="navbar__item">Eventos Aluno</Link>)
+                            :
+                            (null)
+                    )}
+
                 {/* <Link to="/login" className="navbar__item">Login</Link> */}
             </div>
         </nav>
