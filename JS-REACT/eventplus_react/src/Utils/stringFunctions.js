@@ -21,3 +21,8 @@ export const dateFormatDbToView1 = data => {
     return `${data}`; 
 
 }
+
+
+export const dateFormatDbToView2 = data => {
+    return new Date(data).toLocaleDateString();
+}
