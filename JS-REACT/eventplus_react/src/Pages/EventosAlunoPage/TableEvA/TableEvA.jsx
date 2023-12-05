@@ -35,7 +35,7 @@ const Table = ({ dados, fnConnect = null, fnShowModal = null }) => {
               <td className="tbal-data__data tbal-data__data--big">
                 {e.nomeEvento}
               </td>
-              
+
               <td className="tbal-data__data tbal-data__data--big tbal-data__btn-actions">
                 {/* {e.dataEvento} */}
                 {dateFormatDbToView(e.dataEvento)}
@@ -50,7 +50,7 @@ const Table = ({ dados, fnConnect = null, fnShowModal = null }) => {
                   onClick={fnShowModal}
                 />
 
-                <ToggleSwitch manipulationFunction={fnConnect}/>
+                <ToggleSwitch toggleActive={e.situacao} manipulationFunction={fnConnect}/>
               </td>
             </tr>
           );

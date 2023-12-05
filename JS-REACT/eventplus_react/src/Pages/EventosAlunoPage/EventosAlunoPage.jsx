@@ -8,8 +8,10 @@ import Spinner from "../../Components/Spinner/Spinner";
 import Modal from "../../Components/Modal/Modal";
 // import Toggle from "../../components/Toggle/Toggle";
 import api from "../../Services/Services";
+import Notification from '../../Components/Notification/Notification';
 
 import "./EventosAlunoPage.css"
+
 import { UserContext } from "../../context/AuthContext";
 
 const EventosAlunoPage = () => {
@@ -25,9 +27,10 @@ const EventosAlunoPage = () => {
   const [tipoEvento, setTipoEvento] = useState("1"); //código do tipo do Evento escolhido
   const [showSpinner, setShowSpinner] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [notifyUser, setNotifyUser] = useState({});
 
   // const [presenca, setPresenca] = useState(false);
-  
+
 
   // recupera os dados globais do usuário
   const { userData, setUserData } = useContext(UserContext);
@@ -40,19 +43,34 @@ const EventosAlunoPage = () => {
       setShowSpinner(true)
 
       if (tipoEvento === "1") { //todos os eventos
+
         try {
 
           const promiseAllEvents = (await api.get('/Evento'));
+
+          const promiseMyEvents = (await api.get(`/PresencasEvento/ListarMinhas/${userData.userId}`));
+
+          const dadosMarcados = verificaPresenca(promiseAllEvents.data, promiseMyEvents.data);
+
+          console.clear();
+
+          console.log("DADOS MARCADOS: ");
+
+          console.log(dadosMarcados);
 
           setEventos(promiseAllEvents.data)
 
         } catch (error) {
 
-          alert("Erro ao carregar os eventos ")
+          // alert("Erro ao carregar os eventos ")
+          console.log(error)
 
         }
+
       }
-      else { //meus eventos
+
+      else if (tipoEvento === "2") { //meus eventos
+
         try {
 
           let arrayEventos = [];
@@ -60,7 +78,7 @@ const EventosAlunoPage = () => {
           const promiseMyEvents = (await api.get(`/PresencasEvento/ListarMinhas/${userData.userId}`));
 
           promiseMyEvents.data.forEach((e) => {
-            arrayEventos.push(e.evento)
+            arrayEventos.push({...e.evento, situacao : e.situacao})
           })
 
           setEventos(arrayEventos)
@@ -74,16 +92,41 @@ const EventosAlunoPage = () => {
           console.log(error);
 
         }
+
       }
+
+      else {
+
+        setEventos([])
+
+      }
+
       setShowSpinner(false)
+
     }
 
     console.log(tipoEvento);
 
     loadEventsType();
 
+  }, [tipoEvento, userData.userId]); //colocando o userid nas dependencias do useeffect para quando dar reload na página nao dar ruim
 
-  }, [tipoEvento]);
+
+  //PARA CADA EVENTO DE TODOS, VOU VERIFICAR A CORRESPONDÊNCIA DELE NO MEUS EVENTOS
+  const verificaPresenca = (arrAllEvents, eventsUSer) => {
+    for (let x = 0; x < arrAllEvents.length; x++) { //PARA CADA EVENTO (TODOS)
+
+      for (let y = 0; y < eventsUSer.length; y++) { // VERIFICA NO MEUS EVENTOS
+        if (arrAllEvents[x].idEvento === eventsUSer[y].idEvento) {
+          arrAllEvents[x].situacao = true;
+          break;
+        }
+      }
+    }
+    return arrAllEvents;
+  }
+
+
 
   // toggle meus eventos ou todos os eventos
   function myEvents(tpEvent) {
@@ -107,9 +150,12 @@ const EventosAlunoPage = () => {
   }
   return (
     <>
+
+      <Notification {...notifyUser} setNotifyUser={setNotifyUser} />
+
       <MainContent>
         <Container>
-          <Title titleText={"Eventos"} className="custom-title" />
+          <Title titleText={"Eventos"} additionalCLass="custom-title" />
 
           <SelectMyEvents
             id="id-tipo-evento"

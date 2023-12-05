@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import trashDelete from "../../assets/images/images/trash-delete-red.png";
 
 import { Button, Input } from "../FormComponents/FormComponents";
@@ -13,6 +13,19 @@ const Modal = ({
   fnNewCommentary = null
 
 }) => {
+
+
+  useEffect(() => {
+    
+    async function getAll() {
+
+
+      getAll();
+    }
+
+  }, [])
+
+
 
   return (
     <div className="modal">
