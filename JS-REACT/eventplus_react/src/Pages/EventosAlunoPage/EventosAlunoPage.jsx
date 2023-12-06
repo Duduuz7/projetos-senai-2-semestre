@@ -35,81 +35,86 @@ const EventosAlunoPage = () => {
   // recupera os dados globais do usuário
   const { userData, setUserData } = useContext(UserContext);
 
+  // FUNCAO DOMUSE EFFECT, GET
 
-  useEffect(() => {
+  async function loadEventsType() {
 
-    async function loadEventsType() {
+    setShowSpinner(true)
 
-      setShowSpinner(true)
+    if (tipoEvento === "1") { //todos os eventos
 
-      if (tipoEvento === "1") { //todos os eventos
+      try {
 
-        try {
+        const promiseAllEvents = (await api.get('/Evento'));
 
-          const promiseAllEvents = (await api.get('/Evento'));
+        const promiseMyEvents = (await api.get(`/PresencasEvento/ListarMinhas/${userData.userId}`));
 
-          const promiseMyEvents = (await api.get(`/PresencasEvento/ListarMinhas/${userData.userId}`));
+        const dadosMarcados = verificaPresenca(promiseAllEvents.data, promiseMyEvents.data);
 
-          const dadosMarcados = verificaPresenca(promiseAllEvents.data, promiseMyEvents.data);
+        console.clear();
 
-          console.clear();
+        console.log("DADOS MARCADOS: ");
 
-          console.log("DADOS MARCADOS: ");
+        console.log(dadosMarcados);
 
-          console.log(dadosMarcados);
+        setEventos(promiseAllEvents.data)
 
-          setEventos(promiseAllEvents.data)
+      } catch (error) {
 
-        } catch (error) {
-
-          // alert("Erro ao carregar os eventos ")
-          console.log(error)
-
-        }
+        // alert("Erro ao carregar os eventos ")
+        console.log(error)
 
       }
-
-      else if (tipoEvento === "2") { //meus eventos
-
-        try {
-
-          let arrayEventos = [];
-
-          const promiseMyEvents = (await api.get(`/PresencasEvento/ListarMinhas/${userData.userId}`));
-
-          promiseMyEvents.data.forEach((e) => {
-            arrayEventos.push({...e.evento, situacao : e.situacao})
-          })
-
-          setEventos(arrayEventos)
-
-          console.log(promiseMyEvents);
-
-        } catch (error) {
-
-          alert("Erro em carregar os eventos do aluno")
-
-          console.log(error);
-
-        }
-
-      }
-
-      else {
-
-        setEventos([])
-
-      }
-
-      setShowSpinner(false)
 
     }
 
-    console.log(tipoEvento);
+    else if (tipoEvento === "2") { //meus eventos
+
+      try {
+
+        let arrayEventos = [];
+
+        const promiseMyEvents = (await api.get(`/PresencasEvento/ListarMinhas/${userData.userId}`));
+
+        promiseMyEvents.data.forEach((e) => {
+          arrayEventos.push({
+            ...e.evento,
+            situacao: e.situacao,
+            idPresencaEvento: e.idPresencaEvento
+          })
+        })
+
+        setEventos(arrayEventos)
+
+        console.log(promiseMyEvents);
+
+      } catch (error) {
+
+        alert("Erro em carregar os eventos do aluno")
+
+        console.log(error);
+
+      }
+
+    }
+
+    else {
+
+      setEventos([])
+
+    }
+
+    setShowSpinner(false)
+
+  }
+
+  // USE EFFECT
+
+  useEffect(() => {
 
     loadEventsType();
 
-  }, [tipoEvento, userData.userId]); //colocando o userid nas dependencias do useeffect para quando dar reload na página nao dar ruim
+  }, [tipoEvento, userData.userId]); //colocando o userId nas dependencias do useeffect para quando dar reload na página nao dar ruim
 
 
   //PARA CADA EVENTO DE TODOS, VOU VERIFICAR A CORRESPONDÊNCIA DELE NO MEUS EVENTOS
@@ -119,6 +124,7 @@ const EventosAlunoPage = () => {
       for (let y = 0; y < eventsUSer.length; y++) { // VERIFICA NO MEUS EVENTOS
         if (arrAllEvents[x].idEvento === eventsUSer[y].idEvento) {
           arrAllEvents[x].situacao = true;
+          arrAllEvents[x].idPresencaEvento = eventsUSer[y].idPresencaEvento; //traz o id da presenca evento tambem, para usar no desconectar do evento(toggle)
           break;
         }
       }
@@ -133,21 +139,110 @@ const EventosAlunoPage = () => {
     setTipoEvento(tpEvent);
   }
 
+  // ler comentário - get
   async function loadMyComentary(idComentary) {
-    return "????";
+    alert("Carregar comentário")
   }
+
+  //cadastrar comentário - post
+  async function postMyComentary() {
+    alert("Cadastrar o comentário")
+  }
+
 
   const showHideModal = () => {
     setShowModal(showModal ? false : true);
   };
 
-  const commentaryRemove = () => {
+  //remove comentário - delete
+  const commentaryRemove = async () => {
     alert("Remover o comentário");
   };
 
-  function handleConnect() {
-    alert("Desenvolver a função conectar evento");
+
+  // FUNÇÃO CONNECT, PARA FUNCIONAR TOGGLE CERTINHO.
+
+  async function handleConnect(idEvent, whatTheFunction, idPresencaEvento = null) {
+
+    if (whatTheFunction === "connect") {
+
+      try {
+
+        const promisePost = await api.post("/PresencasEvento", {
+
+          situacao: true,
+          idUsuario: userData.userId,
+          idEvento: idEvent
+
+        });
+
+        if (promisePost.status === 201) {
+          // alert("Presença confirmada, parabéns !!")
+          loadEventsType()
+
+          setNotifyUser({
+            titleNote: "Sucesso",
+            textNote: `Presenca confirmada !`,
+            imgIcon: "success",
+            imgAlt:
+              "Imagem de ilustração de sucesso. Moça segurando um balão com símbolo de confirmação ok.",
+            showMessage: true,
+          });
+        }
+
+      } catch (error) {
+        setNotifyUser({
+          titleNote: "Erro",
+          textNote: `Erro ao confirmar a presença !!`,
+          imgIcon: "danger",
+          imgAlt:
+            "Imagem de ilustração de erro.",
+          showMessage: true,
+        });
+
+        console.log(error);
+      }
+      return;
+    }
+
+    try { //desconectar
+
+      const promiseUnconnect = await api.delete(`/PresencasEvento/${idPresencaEvento}`)
+
+
+
+      if (promiseUnconnect.status === 204) {
+        // alert("Desconectado do evento !!!")
+        loadEventsType()
+
+        setNotifyUser({
+          titleNote: "Sucesso",
+          textNote: `Presenca cancelada com sucesso !`,
+          imgIcon: "success",
+          imgAlt:
+            "Imagem de ilustração de sucesso. Moça segurando um balão com símbolo de confirmação ok.",
+          showMessage: true,
+        });
+      }
+
+    } catch (error) {
+
+      setNotifyUser({
+        titleNote: "Erro",
+        textNote: `Erro ao cancelar a presença !!`,
+        imgIcon: "danger",
+        imgAlt:
+          "Imagem de ilustração de erro.",
+        showMessage: true,
+      });
+
+      console.log(error);
+    }
+
   }
+
+  // RETURN GERAL
+
   return (
     <>
 
@@ -183,6 +278,8 @@ const EventosAlunoPage = () => {
         <Modal
           userId={userData.userId}
           showHideModal={showHideModal}
+          fnGet={loadMyComentary}
+          fnPost={postMyComentary}
           fnDelete={commentaryRemove}
         />
       ) : null}
