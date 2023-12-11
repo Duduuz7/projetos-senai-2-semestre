@@ -7,8 +7,14 @@ import { Select, SelectMyEvents } from "../../Components/FormComponents/FormComp
 import Spinner from "../../Components/Spinner/Spinner";
 import Modal from "../../Components/Modal/Modal";
 // import Toggle from "../../components/Toggle/Toggle";
-import api from "../../Services/Services";
 import Notification from '../../Components/Notification/Notification';
+
+import api, {
+  eventsResource,
+  myEventsResource,
+  presencesEventResource,
+  commentaryEventResource,
+} from "../../Services/Services";
 
 import "./EventosAlunoPage.css"
 
@@ -28,7 +34,11 @@ const EventosAlunoPage = () => {
   const [showSpinner, setShowSpinner] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [notifyUser, setNotifyUser] = useState({});
+  const [idComentario, setIdComentario] = useState(null);
 
+  const [comentario, setComentario] = useState("");
+
+  const [idEvento, setIdEvento] = useState([])
   // const [presenca, setPresenca] = useState(false);
 
 
@@ -139,26 +149,77 @@ const EventosAlunoPage = () => {
     setTipoEvento(tpEvent);
   }
 
-  // ler comentário - get
-  async function loadMyComentary(idComentary) {
-    alert("Carregar comentário")
-  }
-
-  //cadastrar comentário - post
-  async function postMyComentary() {
-    alert("Cadastrar o comentário")
-  }
-
-
-  const showHideModal = () => {
+  const showHideModal = async (idEvent) => {
     setShowModal(showModal ? false : true);
+
+    // const promise = await api.get("/Evento")
+
+    setIdEvento(idEvent)
+
+    console.log(idEvento);
   };
 
-  //remove comentário - delete
-  const commentaryRemove = async () => {
-    alert("Remover o comentário");
+  // ler um comentário - get
+  const loadMyCommentary = async (idUsuario, idEvento) => {
+    // console.log("fui chamado");
+
+    try {
+      // api está retornando sempre todos os comentários do usuário
+      const promise = await api.get(
+        `${commentaryEventResource}?idUsuario=${idUsuario}&idEvento=${idEvento}`
+      );
+
+      const myComm = await promise.data.filter(
+        (comm) => comm.idEvento === idEvento && comm.idUsuario === idUsuario
+      );
+
+      // console.log("QUANTIDADE DE DADOS NO ARRAY FILTER");
+      // console.log(myComm.length);
+      // console.log(myComm);
+
+      setComentario(myComm.length > 0 ? myComm[0].descricao : "");
+      setIdComentario(myComm.length > 0 ? myComm[0].idComentarioEvento : null);
+    } catch (error) {
+      console.log("Erro ao carregar o evento");
+      console.log(error);
+    }
   };
 
+  // cadastrar um comentário = post
+  const postMyCommentary = async (descricao, idUsuario, idEvento) => {
+    try {
+      const promise = await api.post(commentaryEventResource, {
+        descricao: descricao,
+        exibe: true,
+        idUsuario: idUsuario,
+        idEvento: idEvento,
+      });
+
+      if (promise.status === 200) {
+        alert("Comentário cadastrado com sucesso");
+      }
+    } catch (error) {
+      console.log("Erro ao cadastrar o comentário");
+      console.log(error);
+    }
+  };
+
+  // remove o comentário - delete
+  const commentaryRemove = async (idComentario) => {
+    // alert("Remover o comentário " + idComentario);
+
+    try {
+      const promise = await api.delete(
+        `${commentaryEventResource}/${idComentario}`
+      );
+      if (promise.status === 200) {
+        alert("Comentário excluído com sucesso!");
+      }
+    } catch (error) {
+      console.log("Erro ao excluir ");
+      console.log(error);
+    }
+  };
 
   // FUNÇÃO CONNECT, PARA FUNCIONAR TOGGLE CERTINHO.
 
@@ -278,8 +339,8 @@ const EventosAlunoPage = () => {
         <Modal
           userId={userData.userId}
           showHideModal={showHideModal}
-          fnGet={loadMyComentary}
-          fnPost={postMyComentary}
+          fnGet={loadMyCommentary}
+          fnPost={postMyCommentary}
           fnDelete={commentaryRemove}
         />
       ) : null}

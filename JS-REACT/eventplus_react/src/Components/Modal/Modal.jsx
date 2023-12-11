@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import trashDelete from "../../assets/images/images/trash-delete-red.png";
 
 import { Button, Input } from "../FormComponents/FormComponents";
@@ -6,15 +6,21 @@ import "./Modal.css";
 
 const Modal = ({
   modalTitle = "Feedback",
-  comentaryText = "Não informado. Não informado. Não informado.",
+  comentaryText = 'Não Informado !',
   userId = null,
   showHideModal = false,
   fnGet = null,
   fnPost = null,
   fnDelete = null,
-  
+  idEvento = null,
+  idComentario = null,
 }) => {
 
+  const [comentarioDesc, setComentarioDesc] = useState("");
+
+  useEffect( () => {
+     fnGet(userId, idEvento)
+   }, [])
 
   return (
     <div className="modal">
@@ -31,7 +37,10 @@ const Modal = ({
             src={trashDelete}
             className="comentary__icon-delete"
             alt="Ícone de uma lixeira"
-            onClick={fnDelete}
+            onClick={async () => {
+              await fnDelete(idComentario);
+              await fnGet();
+            }}
           />
 
           <p className="comentary__text">{comentaryText}</p>
@@ -42,12 +51,24 @@ const Modal = ({
         <Input
           placeholder="Escreva seu comentário..."
           additionalClass="comentary__entry"
+          manipulationFunction={(e) => {
+            setComentarioDesc(e.target.value);
+          }}
         />
 
         <Button
           textButton="Comentar"
           additionalClass="comentary__button"
-          manipulationFunction={fnPost}
+          manipulationFunction={async () => {
+            if (idComentario !== null) {
+                alert("Já existe um comentàrio cadastrado para o evento.");
+              } else {
+                
+                await fnPost(comentarioDesc.trim(), userId, idEvento);
+                await fnGet();
+              }
+              setComentarioDesc("");//;limpa o campo do input
+          }}
         />
       </article>
     </div>

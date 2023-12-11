@@ -47,7 +47,7 @@ const Table = ({ dados, fnConnect = null, fnShowModal = null }) => {
                   idevento={e.idEvento}
                   src={comentaryIcon}
                   alt=""
-                  onClick={fnShowModal}
+                  onClick={() => fnShowModal(e.idEvento)}
                 />
 
                 <ToggleSwitch 
