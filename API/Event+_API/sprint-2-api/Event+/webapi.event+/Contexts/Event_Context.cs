@@ -34,8 +34,7 @@ namespace webapi.event_.Contexts
             //base.OnConfiguring(optionsBuilder);
 
             //string azure
-
-            optionsBuilder.UseSqlServer("Server=tcp:event-eduardo-server.database.windows.net,1433;Initial Catalog=eventEduardoDatBase;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30; User Id=event-eduardo-server; Pwd=Senai@134;");
+            optionsBuilder.UseSqlServer("Server=tcp:event-eduardo-server.database.windows.net,1433;Initial Catalog=eventEduardoDatBase;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30; User Id=event-eduardo-server; Pwd=Senai@134;");
             base.OnConfiguring(optionsBuilder);
         }
     }

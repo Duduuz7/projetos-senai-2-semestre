@@ -21,5 +21,17 @@
             </summary>
             <param name="contentModeratorClient">Um objeto do tipo ContentModeratorClient</param>
         </member>
+        <member name="T:webapi.event_.Migrations.AzureBD">
+            <inheritdoc />
+        </member>
+        <member name="M:webapi.event_.Migrations.AzureBD.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:webapi.event_.Migrations.AzureBD.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:webapi.event_.Migrations.AzureBD.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
     </members>
 </doc>
