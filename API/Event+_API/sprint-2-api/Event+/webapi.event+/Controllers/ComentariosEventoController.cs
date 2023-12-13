@@ -79,11 +79,11 @@ namespace webapi.event_.Controllers
 
 
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult Get(Guid idEvento)
         {
             try
             {
-                return Ok(comentario.Listar());
+                return Ok(comentario.Listar(idEvento));
             }
             catch (Exception e)
             {
@@ -91,13 +91,26 @@ namespace webapi.event_.Controllers
             }
         }
 
+        //[HttpGet("BuscarPorIdEventoIA")]
+        //public IActionResult GetByIdEventIA(Guid idEvento)
+        //{
+        //    try
+        //    {
+        //        return Ok(comentario.BuscarPorIdEvento(idEvento));
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return BadRequest(e.Message);
+        //    }
+        //}
+
 
         [HttpGet("ListarSomenteExibe")]
-        public IActionResult GetIA()
+        public IActionResult GetIA(Guid idEvento)
         {
             try
             {
-                return Ok(comentario.ListarSomenteExibe());
+                return Ok(comentario.ListarSomenteExibe(idEvento));
             }
             catch (Exception e)
             {

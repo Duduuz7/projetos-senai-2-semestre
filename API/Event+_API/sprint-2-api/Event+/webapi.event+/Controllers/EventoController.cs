@@ -44,6 +44,19 @@ namespace webapi.event_.Controllers
             }
         }
 
+        [HttpGet("ListarAnteriores")]
+        public IActionResult GetPrevious()
+        {
+            try
+            {
+                return Ok(_eventoRepository.ListarAnteriores());
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
         [HttpGet("{id}")]
         public IActionResult GetById(Guid id)
         {
